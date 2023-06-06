@@ -33,7 +33,7 @@ public class LogInController : Controller
     {
         var created = await service.RequestCuentaUsuario(model);
 
-        if (created is null || created.IDUsuario > 0)
+        if (created is not null && created.IDUsuario > 1)
             return RedirectToAction("IniciarSesion", "Inicio");
 
         ViewData["Mensaje"] = "Error al crear la solicitud de usuario";
@@ -55,6 +55,7 @@ public class LogInController : Controller
             ViewData["Mensaje"] = "Error iniciando sesion";
             return View();
         }
+
 
 
 

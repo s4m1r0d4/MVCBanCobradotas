@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Sun Jun 4 17:53:26 2023
+-- File generated with SQLiteStudio v3.4.4 on Mon Jun 5 18:43:16 2023
 --
 -- Text encoding used: UTF-8
 --
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS CuentaBancaria (
                              DEFAULT (10000) 
 );
 
+INSERT INTO CuentaBancaria (IDCuentaBancaria, Saldo) VALUES (1, 10000.0);
 
 -- Table: CuentaIngreso
 DROP TABLE IF EXISTS CuentaIngreso;
@@ -48,6 +49,8 @@ CREATE TABLE IF NOT EXISTS CuentaIngreso (
 );
 
 INSERT INTO CuentaIngreso (IDCuentaIngreso, Usuario, Contrasena, FechaInicioFallido, NumInicioFallido) VALUES (1, 'dummy', 'b5a2c96250612366ea272ffac6d9744aaf4b45aacd96aa7cfcb931ee3b558259', NULL, 0);
+INSERT INTO CuentaIngreso (IDCuentaIngreso, Usuario, Contrasena, FechaInicioFallido, NumInicioFallido) VALUES (2, 'GIGB4372', '553369863d1fd1e052ee108199228c89342a02ae9e9bbe5b8ae333f0b163ca04', NULL, 0);
+INSERT INTO CuentaIngreso (IDCuentaIngreso, Usuario, Contrasena, FechaInicioFallido, NumInicioFallido) VALUES (4, 'GIGB4371', 'c6d1caea58f949ae589a74157888acc73216602d49e541b4bb545954e1be19c7', NULL, 0);
 
 -- Table: DiaVacacion
 DROP TABLE IF EXISTS DiaVacacion;
@@ -80,6 +83,7 @@ CREATE TABLE IF NOT EXISTS Empleado (
                             UNIQUE
 );
 
+INSERT INTO Empleado (IDEmpleado, Nombre, Apellido, FechaNacimiento, IDCuentaIngreso, IDNomina) VALUES (1, 'Giordanna Maria Goretti', 'García Bojorquez', '2004-04-23 00:00:00', 2, 1);
 
 -- Table: Estado
 DROP TABLE IF EXISTS Estado;
@@ -120,6 +124,7 @@ CREATE TABLE IF NOT EXISTS Gerente (
                              UNIQUE
 );
 
+INSERT INTO Gerente (IDGerente, Nombre, Apellido, FechaNacimiento, IDNomina, IDCuentaIngreso, IDCuentaBancaria) VALUES (1, 'Giordanna Maria Goretti', 'García Bojorquez', '2004-04-23 00:00:00', 2, 4, 1);
 
 -- Table: Nomina
 DROP TABLE IF EXISTS Nomina;
@@ -130,6 +135,8 @@ CREATE TABLE IF NOT EXISTS Nomina (
     FechaIngreso TEXT    NOT NULL
 );
 
+INSERT INTO Nomina (IDNomina, FechaIngreso) VALUES (1, '2023-06-05 17:45:09.7199227');
+INSERT INTO Nomina (IDNomina, FechaIngreso) VALUES (2, '2023-06-05 17:45:09.9694611');
 
 -- Table: Pago
 DROP TABLE IF EXISTS Pago;
@@ -201,6 +208,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
                                                           ON UPDATE CASCADE
 );
 
+INSERT INTO Usuario (IDUsuario, Nombre, Apellido, FechaNacimiento, CURP, IDEstado, IDCuentaIngreso, IDCuentaBancaria, IDNomina) VALUES (1, 'Giordanna Maria Goretti', 'Garcia Bojorquez', '2004-04-23 00:00:00', 'GABG040423MJCRJRA2', 1, NULL, NULL, NULL);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

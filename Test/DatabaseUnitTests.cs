@@ -1,6 +1,6 @@
-using System.Linq.Expressions;
 using BanCobradotas.Models;
 using BanCobradotas.Util;
+using WebApp.Services.Implementations;
 
 namespace UnitTests;
 
@@ -245,5 +245,22 @@ public class DatabaseUnitTests
 
         // Then
         Assert.True(gerente.affected == 1, "Error registering Gerente");
+    }
+
+    [Fact]
+    public async void TestNavigationProperties()
+    {
+        // Given
+        using BanCobradotasContext db = new();
+        CuentaIngresoService service = new(db);
+        string username = "GIGB4371";
+        string pswd = "GIGB4377472";
+
+        // When
+        var cuenta = await service.GetCuentaIngreso(username, pswd);
+
+        // Then
+        Assert.True(cuenta is not null, "Couldn't find default account");
+        Assert.True(cuenta.Gerente is not null, "This account should belong to a Gerente");
     }
 }
