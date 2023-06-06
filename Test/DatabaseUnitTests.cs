@@ -24,7 +24,6 @@ public class DatabaseUnitTests
         int expected = 6;
         int actual = db.Estados.Count();
 
-
         // Then
         Assert.True(actual == expected, "Table 'Estados' should have 6 values");
     }

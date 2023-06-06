@@ -34,7 +34,7 @@ public class LogInController : Controller
         var created = await service.RequestCuentaUsuario(model);
 
         if (created is not null && created.IDUsuario > 1)
-            return RedirectToAction("IniciarSesion", "Inicio");
+            return RedirectToAction("IniciarSesion", "LogIn");
 
         ViewData["Mensaje"] = "Error al crear la solicitud de usuario";
 
@@ -56,17 +56,29 @@ public class LogInController : Controller
             return View();
         }
 
+        string nombre = "Unknown";
+        if (usr.Empleado is not null) nombre = usr.Empleado.Nombre;
+        if (usr.Gerente is not null) nombre = usr.Gerente.Nombre;
+        if (usr.UsuarioNavigation is not null) nombre = usr.UsuarioNavigation.Nombre;
 
-
-
-        /* 
         List<Claim> claims = new() {
-            new Claim(ClaimTypes.)
-        }
-        https://www.youtube.com/watch?v=x0MBbx7lym8&t=1850s
-        */
+            new Claim(ClaimTypes.Name, nombre)
+        };
 
-        return View();
+        ClaimsIdentity claimsIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        AuthenticationProperties properties = new()
+        {
+            AllowRefresh = true
+        };
+
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            properties
+        );
+
+
+        return RedirectToAction("Index", "Home");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
