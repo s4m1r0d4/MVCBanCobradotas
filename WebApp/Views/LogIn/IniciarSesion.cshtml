@@ -2,8 +2,30 @@
     ViewData["Title"] = "Iniciar Sesion";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="BanCobradotas">
+	<a href="Principal.html" class="custom-link">BanCobradotas</a>
+</div>
 
-<div>
+<div class="jumbotron">
+
+    <form method="post" class="pure-form">
+
+        <div class="container">
+            Ingresa tu usuario
+            <input type="text" asp-for="Usuario" class="pure-input-rounded" size="20"
+            style="background: #D3CEFA;  border: 4px solid #363469; "
+            />
+        </div>
+        <br /><br />
+        <div class="container">
+            Ingresa tu contraseña
+            <input type="password" asp-for="Contrasena" class="pure-input-rounded"  style="background: #D3CEFA; border: 4px solid #363469;"/>
+        </div>
+        
+        <br /><br />
+        <div class="aceptar">
+        <input type="submit" value="aceptar" class="pure-input-rounded" style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
+        </div>
+    </form>
 
 </div>
