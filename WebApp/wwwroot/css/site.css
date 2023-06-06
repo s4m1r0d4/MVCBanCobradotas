@@ -1,22 +1,144 @@
-html {
-  font-size: 14px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arapey&family=Libre+Baskerville&display=swap');
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-  margin-bottom: 60px;
+background: #363469;
+}
+
+.custom-link {
+color: #FFF;
+text-decoration: none;
+font-size: 20px;
+}
+
+.BanCobradotas {
+font-family: 'Baloo Tamma 2', cursive;
+font-size: 20px;
+position: fixed;
+top: 30px;
+left: 10px;
+}
+
+.Login {
+font-family: 'Baloo Tamma 2', cursive;
+font-size: 20px;
+position: fixed;
+top: 30px;
+right: 10px;
+}
+
+.texto1 {
+
+color: #FFF;
+font-size: 35px;
+font-family: 'Libre Baskerville', serif;
+margin-left: 20px;
+margin-right: 890px;
+margin-top: 200px;
+position: absolute;
+}
+
+.texto2 {
+color: #FFF;
+font-family: 'Arapey', serif;
+font-size: 20px;
+margin-left: 20px;
+margin-top: 600px;
+position: absolute;
+margin-right: 700px;
+}
+
+.imagen {
+width: 900px;
+height: 700px;
+position: fixed;
+right: 10px;
+margin-top: -600px;
+}
+
+.ingreso {
+width: 200px;
+height: 90px;
+background: #BBB5EA;
+border-color: #E9E9ED;
+color: #FFF;
+font-family: 'Baloo Tamma 2', cursive;
+font-size: 25px;
+border-radius: 40px;
+position: fixed;
+bottom: 10px;
+margin-left: 90px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600&display=swap');
+
+
+body
+{
+	background: linear-gradient(to bottom right,white, #363469);
+	height: 100%;
+}
+
+.header
+{
+	color: #363469;
+	font-family: 'Baloo Tamma 2', cursive;
+	text-align: center;
+	font-size: 50px;
+}
+
+.BanCobradotas
+{
+	
+	font-family: 'Baloo Tamma 2', cursive;
+	font-size: 20px;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.jumbotron
+{
+	width: 300px;
+	height: 400px;
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	padding: 20px;
+	margin: 0 auto;
+	border-radius: 10%;
+	opacity: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.container
+{
+	font-size: 20px;
+	color: #363469;
+	font-family: 'Baloo Tamma 2';
+	text-align: center;
+}
+
+.aceptar
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.pure-input-rounded
+{
+	width: 250px;
+}
+
+.custom-link
+{
+	color: #FFF;
+	text-decoration: none;
+	font-size: 30px;
 }
