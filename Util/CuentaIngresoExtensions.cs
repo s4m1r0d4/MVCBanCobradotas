@@ -80,7 +80,12 @@ public static class CuentaIngresoExtensions
         string contrasena)
     {
         // It should be FirstOrDefault because it can be null
-        var cuenta = await db.CuentasIngreso.FirstOrDefaultAsync(c => c.Usuario == usuario);
+        var cuenta = await db.CuentasIngreso
+            .Include(c => c.Empleado) // Línea de oro 1
+            .Include(c => c.Gerente) // Línea de oro 2
+            .Include(c => c.UsuarioNavigation) // Línea de oro 3
+            .FirstOrDefaultAsync(c => c.Usuario == usuario);
+
         if (cuenta is null) return null;
 
         var diff = DateTime.Now - cuenta.FechaInicioFallido;

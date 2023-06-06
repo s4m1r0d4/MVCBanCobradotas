@@ -1,4 +1,6 @@
 using BanCobradotas.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Services.Implementations;
 using WebApp.Services.Interfaces;
@@ -16,6 +18,14 @@ builder.Services.AddDbContext<BanCobradotasContext>(options =>
 
 builder.Services.AddScoped<ICuentaIngresoService, CuentaIngresoService>();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/LogIn/IniciarSesion";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    }
+);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
