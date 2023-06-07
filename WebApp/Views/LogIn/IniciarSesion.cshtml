@@ -1,6 +1,13 @@
+@model BanCobradotas.Models.Usuario;
 @{
-    ViewData["Title"] = "Iniciar Sesion";
+    ViewData["Title"] = "IniciarSesion";
 }
+
+<div class="header">
+
+<p>Welcome Again to BanCobradotas! </p>
+
+</div>
 
 <div class="BanCobradotas">
 	<a href="Principal.html" class="custom-link">BanCobradotas</a>
@@ -12,14 +19,12 @@
 
         <div class="container">
             Ingresa tu usuario
-            <input type="text" asp-for="Usuario" class="pure-input-rounded" size="20"
-            style="background: #D3CEFA;  border: 4px solid #363469; "
-            />
+            <input type="text" class="pure-input-rounded"/>
         </div>
         <br /><br />
         <div class="container">
             Ingresa tu contraseña
-            <input type="password" asp-for="Contrasena" class="pure-input-rounded"  style="background: #D3CEFA; border: 4px solid #363469;"/>
+            <input type="password" class="pure-input-rounded"  style="background: #D3CEFA; border: 4px solid #363469;"/>
         </div>
         
         <br /><br />

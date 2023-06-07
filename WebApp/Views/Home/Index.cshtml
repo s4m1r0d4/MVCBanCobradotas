@@ -3,10 +3,11 @@
 }
 
 <div class="BanCobradotas">
-    <a href="Principal.html" class="custom-link">BanCobradotas</a>
+    <a href="@Url.Action("Index")" class="custom-link">BanCobradotas</a>
+ 
 </div>
 <div class="Login">
-    <a href="pruebaBanCobradotas.html" class="custom-link">Iniciar sesion</a>
+    <a href="@Url.Action("IniciarSesion")" class="custom-link">sesion</a>
 </div>
 <div class="texto1">
     <h1 class="animate__animated animate__backInLeft">Descubre mejores maneras de mantener tu dinero</h1>
@@ -16,6 +17,6 @@
 </div>
 
 <img src="index.png" alt="banconbradotas source file" class="imagen">
-<a href="registro.html">
+<a href="@Url.Action("Index", "Registrarse", new { area = "", folder = "LogIn" })">
     <button class="ingreso">Registrarse</button>
 </a>

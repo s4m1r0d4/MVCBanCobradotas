@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600&display=swap');
 
 
-body
-{
-    background: linear-gradient(to bottom right,white, #363469);
-    height: 100%;
-}
+    body
+    {
+        background: linear-gradient(to bottom right,white, #363469);
+        height: 100%;
+    }
 
 .header
 {
@@ -38,7 +38,7 @@ body
     opacity: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+        align-items: center;
     
 }
 
@@ -54,7 +54,7 @@ body
 {
     display: flex;
     justify-content: center;
-    align-items: center;
+        align-items: center;
 
 }
 
