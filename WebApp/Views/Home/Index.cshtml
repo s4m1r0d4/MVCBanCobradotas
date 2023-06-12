@@ -2,21 +2,27 @@
     ViewData["Title"] = "Pagina Principal";
 }
 
+@if (ViewData.ContainsKey("nombreUsuario"))
+{
+    <div class="display-4">@ViewData["nombreUsuario"]</div>
+}
+
 <div class="BanCobradotas">
     <a href="@Url.Action("Index")" class="custom-link">BanCobradotas</a>
- 
+
 </div>
 <div class="Login">
-    <a href="@Url.Action("IniciarSesion")" class="custom-link">sesion</a>
+    <a href="@Url.Action("IniciarSesion", "LogIn")" class="custom-link">Iniciar Sesion</a>
 </div>
 <div class="texto1">
     <h1 class="animate__animated animate__backInLeft">Descubre mejores maneras de mantener tu dinero</h1>
 </div>
 <div class="texto2">
-    <h1 class="animate__animated animate__backInLeft">BanCobradotas es un sistema web de banco responsable de que la administracion de tus pagos y cuentas sea posible.</h1>
+    <h1 class="animate__animated animate__backInLeft">BanCobradotas es un sistema web de banco responsable de que la
+        administracion de tus pagos y cuentas sea posible.</h1>
 </div>
 
 <img src="index.png" alt="banconbradotas source file" class="imagen">
-<a href="@Url.Action("Index", "Registrarse", new { area = "", folder = "LogIn" })">
+<a href="@Url.Action("Registrarse", "LogIn")">
     <button class="ingreso">Registrarse</button>
 </a>

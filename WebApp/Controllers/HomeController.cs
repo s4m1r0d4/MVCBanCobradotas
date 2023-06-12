@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using BancoMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BancoMVC.Controllers;
 
@@ -15,6 +16,16 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ClaimsPrincipal claimuser = HttpContext.User;
+        string nombreUsuario = "";
+
+        if (claimuser.Identity.IsAuthenticated) {
+            nombreUsuario = claimuser.Claims.Where(c => c.Type == ClaimTypes.Name)
+                .Select(c => c.Value).SingleOrDefault();
+        }
+
+        ViewData["nombreUsuario"] = nombreUsuario;
+
         return View();
     }
 

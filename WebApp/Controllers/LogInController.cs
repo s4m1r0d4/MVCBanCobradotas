@@ -13,7 +13,8 @@ using WebApp.Services.Interfaces;
 
 namespace WebApp.Controllers;
 
-[Route("[controller]")]
+// [Route("[controller]")]
+// ^^^^^^^^^^^^^^^^^^^^ Pinche línea del demonio nos quitó 5 días
 public class LogInController : Controller
 {
     private readonly ICuentaIngresoService service;
@@ -33,9 +34,10 @@ public class LogInController : Controller
     {
         var created = await service.RequestCuentaUsuario(model);
 
-        if (created is not null && created.IDUsuario > 1)
+        if (created is not null && created.IDUsuario > 0)
             return RedirectToAction("IniciarSesion", "LogIn");
 
+        // TODO: Improve error message
         ViewData["Mensaje"] = "Error al crear la solicitud de usuario";
 
         return View();

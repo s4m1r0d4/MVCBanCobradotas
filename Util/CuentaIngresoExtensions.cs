@@ -61,7 +61,7 @@ public static class CuentaIngresoExtensions
 
 #warning Credentials are being logged
         string dir = Environment.CurrentDirectory;
-        string path = string.Empty;
+        string path;
         if (dir.EndsWith("net7.0")) { // In case program is being tested (bin/debug/net7.0)
             path = Path.Combine("..", "..", "..", "..", "cuentas_debug.txt");
         } else {
@@ -86,6 +86,7 @@ public static class CuentaIngresoExtensions
             .Include(c => c.UsuarioNavigation) // Línea de oro 3
             .FirstOrDefaultAsync(c => c.Usuario == usuario);
 
+        // TODO: Error message using view data
         if (cuenta is null) return null;
 
         var diff = DateTime.Now - cuenta.FechaInicioFallido;

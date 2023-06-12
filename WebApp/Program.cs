@@ -26,6 +26,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     }
 );
 
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(
+            new ResponseCacheAttribute
+            {
+                NoStore = true,
+                Location = ResponseCacheLocation.None,
+            }
+        );
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
