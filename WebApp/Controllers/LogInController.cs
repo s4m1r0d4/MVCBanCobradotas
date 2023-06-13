@@ -32,13 +32,12 @@ public class LogInController : Controller
     [HttpPost]
     public async Task<IActionResult> Registrarse(Usuario model)
     {
-        var created = await service.RequestCuentaUsuario(model);
+        var (usr, err) = await service.RequestCuentaUsuario(model);
 
-        if (created is not null && created.IDUsuario > 0)
+        if (usr is not null && usr.IDUsuario > 0)
             return RedirectToAction("IniciarSesion", "LogIn");
 
-        // TODO: Improve error message
-        ViewData["Mensaje"] = "Error al crear la solicitud de usuario";
+        ViewData["Mensaje"] = err;
 
         return View();
     }

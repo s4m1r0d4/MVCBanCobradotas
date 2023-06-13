@@ -1,71 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600&display=swap');
 
+body {
+    background: linear-gradient(to bottom right, white, #363469);
+    height: 100%;
+}
 
-	body
-	{
-		background: linear-gradient(to bottom right,white, #363469);
-		height: 100%;
-	}
+.header {
+    color: #363469;
+    font-family: 'Baloo Tamma 2', cursive;
+    text-align: center;
+    font-size: 50px;
+}
 
-  .header
-  {
-	  color: #363469;
-	  font-family: 'Baloo Tamma 2', cursive;
-	  text-align: center;
-	  font-size: 50px;
-  }
+.BanCobradotas {
 
-  .BanCobradotas
-  {
-	  
-	  font-family: 'Baloo Tamma 2', cursive;
-	  font-size: 20px;
-	  position: fixed;
-	  top: 10px;
-	  right: 10px;
-  }
+    font-family: 'Baloo Tamma 2', cursive;
+    font-size: 20px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
 
-  .jumbotron
-  {
-	   width: 300px;
-	   height: 400px;
-	   background-color: #FFFFFF;
-	   border: 1px solid #FFFFFF;
-	   padding: 20px;
-	   margin: 0 auto;
-	   border-radius: 10%;
-	   opacity: 1;
-	   display: flex;
-	  justify-content: center;
-		align-items: center;
-	   
-  }
+.jumbotron {
+    width: 300px;
+    height: 400px;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10%;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .container
-  {
-	  font-size: 20px;
-	  color: #363469;
-	  font-family: 'Baloo Tamma 2';
-	  text-align: center;
-  }
+}
 
-  .aceptar
-  {
-	  display: flex;
-	  justify-content: center;
-		align-items: center;
+.container {
+    font-size: 20px;
+    color: #363469;
+    background: #D3CEFA;
+    border: 4px solid #363469;
+    font-family: 'Baloo Tamma 2';
+    size: 20px;
+    text-align: center;
+}
+
+.aceptar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   }
 
-  .pure-input-rounded
-  {
-	   width: 250px;
-  }
+.pure-input-rounded {
+    width: 250px;
+}
 
-  .custom-link
-  {
-	  color: #FFF;
-	  text-decoration: none;
-	  font-size: 30px;
-  }
+.custom-link {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 30px;
+}

@@ -1,3 +1,5 @@
+@model BanCobradotas.Models.Usuario
+
 <div class="header">
 
     <p>Bienvenido al registro de BanCobradotas! </p>
@@ -5,33 +7,49 @@
 </div>
 
 <div class="BanCobradotas">
-    <a href="@Url.Action("Index", "Home")" class="custom-link">BanCobradotas</a>
+    <a href="/Home" class="custom-link">BanCobradotas</a>
 </div>
 
 <div class="jumbotron">
 
-    <form method="post" class="pure-form">
+    <form asp-controller="LogIn" asp-action="Registrarse" method="post" class="pure-form">
 
-        <div class="contenedor">
-            Ingresa tu nombre completo
-            <input type="text" class="pure-input-rounded" size="20"/>
+        <div class="container">
+            Ingresa tus nombres
+            <input type="text" name="nombre" class="pure-input-rounded" size="20" asp-for="Nombre" required
+                style="background: #D3CEFA;  border: 4px solid #363469; " />
+        </div>
+        <br /><br />
+        <div class="container">
+            Ingresa tus apellidos
+            <input type="text" name="apellido" class="pure-input-rounded" size="20" asp-for="Apellido" required
+                style="background: #D3CEFA;  border: 4px solid #363469; " />
         </div>
         <br /><br />
         <div class="contenedor">
             Ingresa tu fecha de nacimiento
-            <input type="date" class="pure-input-rounded" />
+            <input type="date" asp-for="FechaNacimiento" class="pure-input-rounded" required
+                style="background: #D3CEFA; border: 4px solid #363469;" />
         </div>
         <br /><br />
-        <div class="contenedor">
-            ingresa tu CURP
-            <input type="text" class="pure-input-rounded" size="20"/>
+        <div class="container">
+            Ingresa tu CURP
+            <input type="text" asp-for="CURP" class="pure-input-rounded" size="20" required
+                style="background: #D3CEFA;  border: 4px solid #363469; " />
         </div>
         <div class="aceptar">
-            <input type="submit" value="aceptar" class="pure-input-rounded"
+            <input type="submit" value="aceptar" class="pure-input-rounded" required
                 style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
         </div>
     </form>
 
-    @* TODO: Add error message *@
+    @if (ViewData.ContainsKey("Mensaje"))
+    {
+        <hr>
+
+        <div class="row" name="err-msg">
+            Error, @ViewData["Mensaje"]
+        </div>
+    }
 
 </div>

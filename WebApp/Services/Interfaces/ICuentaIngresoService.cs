@@ -11,5 +11,5 @@ public interface ICuentaIngresoService
 {
     Task<CuentaIngreso?> GetCuentaIngreso(string usuario, string contrasena);
 
-    Task<Usuario?> RequestCuentaUsuario(Usuario usr);
+    Task<(Usuario? usr, string? err)> RequestCuentaUsuario(Usuario usr);
 }
