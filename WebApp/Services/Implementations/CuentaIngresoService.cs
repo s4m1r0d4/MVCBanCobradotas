@@ -24,7 +24,7 @@ public class CuentaIngresoService : ICuentaIngresoService
         return res;
     }
 
-    public async Task<Usuario?> RequestCuentaUsuario(Usuario usr)
+    public async Task<(Usuario? usr, string? err)> RequestCuentaUsuario(Usuario usr)
     {
         usr.CURP = usr.CURP.Trim();
         usr.Nombre = usr.Nombre.Trim();
@@ -36,10 +36,10 @@ public class CuentaIngresoService : ICuentaIngresoService
             usr.FechaNacimiento,
             usr.CURP);
 
-        if (result.affected != 1) return null;
+        if (result.affected != 1) return (null, result.err);
 
         var usuario = await db.Usuarios.FirstOrDefaultAsync(u => u.IDUsuario == result.usuarioID);
 
-        return usuario;
+        return (usuario, null);
     }
 }

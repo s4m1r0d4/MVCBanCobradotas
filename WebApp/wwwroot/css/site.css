@@ -3,72 +3,72 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600&display=swap');
+
 body {
-background: #363469;
+    background: #363469;
 }
 
 .custom-link {
-color: #FFF;
-text-decoration: none;
-font-size: 20px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .BanCobradotas {
-font-family: 'Baloo Tamma 2', cursive;
-font-size: 20px;
-position: fixed;
-top: 30px;
-left: 10px;
+    font-family: 'Baloo Tamma 2', cursive;
+    font-size: 20px;
+    position: fixed;
+    top: 30px;
+    left: 10px;
 }
 
 .Login {
-font-family: 'Baloo Tamma 2', cursive;
-font-size: 20px;
-position: fixed;
-top: 30px;
-right: 10px;
+    font-family: 'Baloo Tamma 2', cursive;
+    font-size: 20px;
+    position: fixed;
+    top: 30px;
+    right: 10px;
 }
 
 .texto1 {
 
-color: #FFF;
-font-size: 35px;
-font-family: 'Libre Baskerville', serif;
-margin-left: 20px;
-margin-right: 890px;
-margin-top: 200px;
-position: absolute;
+    color: #FFF;
+    font-size: 35px;
+    font-family: 'Libre Baskerville', serif;
+    margin-left: 20px;
+    margin-right: 890px;
+    margin-top: 200px;
+    position: absolute;
 }
 
 .texto2 {
-color: #FFF;
-font-family: 'Arapey', serif;
-font-size: 20px;
-margin-left: 20px;
-margin-top: 600px;
-position: absolute;
-margin-right: 700px;
+    color: #FFF;
+    font-family: 'Arapey', serif;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 600px;
+    position: absolute;
+    margin-right: 700px;
 }
 
 .imagen {
-width: 900px;
-height: 700px;
-position: fixed;
-right: 10px;
-margin-top: -600px;
+    width: 900px;
+    height: 700px;
+    position: fixed;
+    right: 10px;
+    margin-top: -600px;
 }
 
 .ingreso {
-width: 200px;
-height: 90px;
-background: #BBB5EA;
-border-color: #E9E9ED;
-color: #FFF;
-font-family: 'Baloo Tamma 2', cursive;
-font-size: 25px;
-border-radius: 40px;
-position: fixed;
-bottom: 10px;
-margin-left: 90px;
+    width: 200px;
+    height: 90px;
+    background: #BBB5EA;
+    border-color: #E9E9ED;
+    color: #FFF;
+    font-family: 'Baloo Tamma 2', cursive;
+    font-size: 25px;
+    border-radius: 40px;
+    position: fixed;
+    bottom: 10px;
+    margin-left: 90px;
 }
-

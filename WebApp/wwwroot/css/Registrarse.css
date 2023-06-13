@@ -2,23 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600&display=swap');
 
 
-    body
-    {
-        background: linear-gradient(to bottom right,white, #363469);
-        height: 100%;
-    }
+body {
+    background: linear-gradient(to bottom right, white, #363469);
+    height: 100%;
+}
 
-.header
-{
+.header {
     color: #363469;
     font-family: 'Baloo Tamma 2', cursive;
     text-align: center;
     font-size: 50px;
 }
 
-.BanCobradotas
-{
-    
+.BanCobradotas {
+
     font-family: 'Baloo Tamma 2', cursive;
     font-size: 20px;
     position: fixed;
@@ -26,8 +23,7 @@
     right: 10px;
 }
 
-.jumbotron
-{
+.jumbotron {
     width: 300px;
     height: 400px;
     background-color: #FFFFFF;
@@ -38,33 +34,29 @@
     opacity: 1;
     display: flex;
     justify-content: center;
-        align-items: center;
-    
+    align-items: center;
+
 }
 
-.container
-{
+.container {
     font-size: 20px;
     color: #363469;
     font-family: 'Baloo Tamma 2';
     text-align: center;
 }
 
-.aceptar
-{
+.aceptar {
     display: flex;
     justify-content: center;
-        align-items: center;
+    align-items: center;
 
 }
 
-.pure-input-rounded
-{
+.pure-input-rounded {
     width: 250px;
 }
 
-.custom-link
-{
+.custom-link {
     color: #FFF;
     text-decoration: none;
     font-size: 30px;
