@@ -31,7 +31,7 @@ public static class UsuarioExtensions
         db.Usuarios.Add(usuario);
         int affected = db.SaveChanges();
 
-        return (affected, usuario.IDUsuario, null);
+        return (affected, usuario.IDUsuario, "Registro exitoso, revisaremos su solicitud");
     }
 
 }

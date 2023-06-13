@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BanCobradotas.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApp.Services.Interfaces;
@@ -15,6 +16,7 @@ namespace WebApp.Controllers;
 
 // [Route("[controller]")]
 // ^^^^^^^^^^^^^^^^^^^^ Pinche línea del demonio nos quitó 5 días
+[AllowAnonymous]
 public class LogInController : Controller
 {
     private readonly ICuentaIngresoService service;
@@ -32,10 +34,7 @@ public class LogInController : Controller
     [HttpPost]
     public async Task<IActionResult> Registrarse(Usuario model)
     {
-        var (usr, err) = await service.RequestCuentaUsuario(model);
-
-        if (usr is not null && usr.IDUsuario > 0)
-            return RedirectToAction("IniciarSesion", "LogIn");
+        var (_, err) = await service.RequestCuentaUsuario(model);
 
         ViewData["Mensaje"] = err;
 
@@ -50,10 +49,10 @@ public class LogInController : Controller
     [HttpPost]
     public async Task<IActionResult> IniciarSesion(string usuario, string contrasena)
     {
-        var usr = await service.GetCuentaIngreso(usuario, contrasena);
+        var (usr, err) = await service.GetCuentaIngreso(usuario, contrasena);
 
         if (usr == null) {
-            ViewData["Mensaje"] = "Error iniciando sesion";
+            ViewData["Mensaje"] = err;
             return View();
         }
 
