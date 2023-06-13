@@ -1,5 +1,6 @@
 using BanCobradotas.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Services.Implementations;
@@ -26,6 +27,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     }
 );
 
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(
@@ -47,6 +55,7 @@ if (!app.Environment.IsDevelopment()) {
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -55,12 +64,9 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
-    );
-
+);
 
 app.Run();

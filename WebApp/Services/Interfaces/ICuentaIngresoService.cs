@@ -9,7 +9,7 @@ namespace WebApp.Services.Interfaces;
 
 public interface ICuentaIngresoService
 {
-    Task<CuentaIngreso?> GetCuentaIngreso(string usuario, string contrasena);
+    Task<(CuentaIngreso? cuenta, string? err)> GetCuentaIngreso(string usuario, string contrasena);
 
     Task<(Usuario? usr, string? err)> RequestCuentaUsuario(Usuario usr);
 }

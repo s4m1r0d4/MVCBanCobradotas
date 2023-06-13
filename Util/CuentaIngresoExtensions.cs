@@ -74,7 +74,7 @@ public static class CuentaIngresoExtensions
         return db.AddCuentaIngreso(usuario.ToString(), contrasena.ToString());
     }
 
-    public static async Task<CuentaIngreso?> LogIn(
+    public static async Task<(CuentaIngreso? cuenta, string? err)> LogIn(
         this BanCobradotasContext db,
         string usuario,
         string contrasena)
@@ -86,8 +86,8 @@ public static class CuentaIngresoExtensions
             .Include(c => c.UsuarioNavigation) // Línea de oro 3
             .FirstOrDefaultAsync(c => c.Usuario == usuario);
 
-        // TODO: Error message using view data
-        if (cuenta is null) return null;
+        if (cuenta is null)
+            return (null, "Credenciales incorrectas");
 
         var diff = DateTime.Now - cuenta.FechaInicioFallido;
         var fiveMinutes = new TimeSpan(0, 5, 0);
@@ -95,14 +95,14 @@ public static class CuentaIngresoExtensions
         if (cuenta.FechaInicioFallido is not null) {
             if (diff < fiveMinutes && cuenta.NumInicioFallido == 3) {
                 // Maximum of 3 failed attempts in 5 minutes
-                return null;
+                return (null, "Máximo de intentos fallidos alcanzado, intenta en 5 minutos");
             }
         }
 
         string encryptedPassword = Cryptography.HashSHA256(contrasena);
         if (cuenta.Contrasena == encryptedPassword) {
             // Successful attempt
-            return cuenta;
+            return (cuenta, null);
         }
 
         // Failed attempt
@@ -119,6 +119,6 @@ public static class CuentaIngresoExtensions
                 $"Error, couldn't update user with ID {cuenta.IDCuentaIngreso} on failed LogIn attempt");
         }
 
-        return null;
+        return (null, "Credenciales incorrectas");
     }
 }

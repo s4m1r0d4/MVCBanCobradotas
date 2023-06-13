@@ -14,7 +14,7 @@ public class CuentaIngresoService : ICuentaIngresoService
         db = injectedContext;
     }
 
-    public async Task<CuentaIngreso?> GetCuentaIngreso(string usuario, string contrasena)
+    public async Task<(CuentaIngreso? cuenta, string? err)> GetCuentaIngreso(string usuario, string contrasena)
     {
         usuario = usuario.Trim();
         contrasena = contrasena.Trim();
