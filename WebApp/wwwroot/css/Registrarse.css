@@ -4,7 +4,6 @@
 
 body {
     background: linear-gradient(to bottom right, white, #363469);
-    height: 100%;
 }
 
 .header {
@@ -56,7 +55,8 @@ body {
     width: 250px;
 }
 
-.custom-link {
+.custom-link
+{
     color: #FFF;
     text-decoration: none;
     font-size: 30px;

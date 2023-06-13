@@ -6,6 +6,7 @@
 
 .body1 {
     background: #363469;
+    color: white;
 }
 
 .custom-link {
@@ -71,4 +72,14 @@
     position: fixed;
     bottom: 10px;
     margin-left: 90px;
+}
+
+.rectangle{
+    background: #FFFF;
+    position: absolute;
+    color: #363469;
+    width: 1500px;
+    height: 800px;
+    margin-left: 30px;
+    margin-top: 200px;
 }
