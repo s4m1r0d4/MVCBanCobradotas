@@ -91,7 +91,7 @@ public class DatabaseUnitTests
         string contrasena = "incorrectpassword";
 
         // When
-        var cuenta = await db.LogIn(usuario, contrasena);
+        var (cuenta, _) = await db.LogIn(usuario, contrasena);
 
         // Then
         Assert.True(cuenta == null, "Error logging into CuentaIngreso with incorrect password");
@@ -106,7 +106,7 @@ public class DatabaseUnitTests
         string contrasena = "whatever";
 
         // When
-        var cuenta = await db.LogIn(usuario, contrasena);
+        var (cuenta, _) = await db.LogIn(usuario, contrasena);
 
         // Then
         Assert.True(cuenta == null, "Error logging into CuentaIngreso with incorrect username");
@@ -136,14 +136,14 @@ public class DatabaseUnitTests
 
         // Three consecutive failed attempts
         for (int i = 0; i < 3; i++) {
-            cuenta = await db.LogIn(usuario, "incorrectpassword");
+            (cuenta, _) = await db.LogIn(usuario, "incorrectpassword");
             if (cuenta is not null) {
                 throw new Exception("LogIn attempt should have been unsuccessfull");
             }
         }
 
         // Try loggin with correct password, now that it has exhausted it's attempts
-        cuenta = await db.LogIn(usuario, contrasena);
+        (cuenta, _) = await db.LogIn(usuario, contrasena);
 
         // Then
         Assert.True(cuenta == null, "Account should have been blocked on 3 failed attempts");
@@ -184,7 +184,7 @@ public class DatabaseUnitTests
         }
 
 
-        cuenta = await db.LogIn(usuario, contrasena);
+        (cuenta, _) = await db.LogIn(usuario, contrasena);
         Assert.True(cuenta is not null,
             "Dummy account should have logged-in successfully after limit has passed");
 
@@ -256,7 +256,7 @@ public class DatabaseUnitTests
         string pswd = "GIGB4377472";
 
         // When
-        var cuenta = await service.GetCuentaIngreso(username, pswd);
+        var (cuenta, _) = await service.GetCuentaIngreso(username, pswd);
 
         // Then
         Assert.True(cuenta is not null, "Couldn't find default account");
