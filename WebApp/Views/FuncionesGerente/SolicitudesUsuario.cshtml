@@ -1,0 +1,68 @@
+@model BanCobradotas.Models.Usuario
+@{
+    ViewData["Title"] = "FuncionesGerente";
+}
+
+<div class="row">
+    <h1 class="display">Usuario</h1>
+    <table class="thead-inverse" align="left">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>CURP</th>
+        </tr>
+
+        <tbody>
+            @if (ViewBag.SolicitudesUsuario is not null)
+            {
+                @foreach (Usuario data in ViewBag.SolicitudesUsuario)
+                {
+                    <tr>
+                        <td>@data.Nombre</td>
+                        <td>@data.Apellido</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <hr>
+    <hr>
+
+    <form method="post">
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" align="center">Enter a New Category</th>
+                </tr>
+
+                <tr>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" asp-for="Category!.CategoryName">
+                    </td>
+
+                    <td>
+                        <input type="text" asp-for="Category!.Description">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="New Category">
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </form>
+</div>

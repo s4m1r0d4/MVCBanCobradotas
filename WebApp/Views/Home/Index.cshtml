@@ -5,7 +5,7 @@
 
 @if (ViewData.ContainsKey("nombreUsuario"))
 {
-    <div class="display-4">@ViewData["nombreUsuario"]</div>
+    <h2>@ViewData["nombreUsuario"]</h2>
 }
 
 <div class="BanCobradotas">
@@ -13,7 +13,7 @@
 
 </div>
 <div class="login">
-	<a href="@Url.Action("IniciarSesion", "LogIn")" class="custom-link">IniciarSesion</a>
+    <a href="@Url.Action("IniciarSesion", "LogIn")" class="custom-link">IniciarSesion</a>
 </div>
 <div class="texto1">
     <h1 class="animate__animated animate__backInLeft">Descubre mejores maneras de mantener tu dinero</h1>

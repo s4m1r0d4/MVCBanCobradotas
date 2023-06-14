@@ -18,6 +18,7 @@ builder.Services.AddDbContext<BanCobradotasContext>(options =>
 );
 
 builder.Services.AddScoped<ICuentaIngresoService, CuentaIngresoService>();
+// TODO: add the rest of the services
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -29,9 +30,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization(options =>
 {
-    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+    /* options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
-        .Build();
+        .Build(); */
+    options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("IDNomina"));
+    options.AddPolicy("GerenteOnly", policy => policy.RequireClaim("IDGerente"));
+    options.AddPolicy("CuentaBancoOnly", policy => policy.RequireClaim("IDCuentaBancaria"));
 });
 
 builder.Services.AddControllersWithViews(options =>
