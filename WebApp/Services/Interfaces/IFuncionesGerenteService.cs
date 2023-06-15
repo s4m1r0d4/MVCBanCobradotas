@@ -1,11 +1,10 @@
 using BanCobradotas.Models;
 
-namespace WebApp.Services.Interfaces
-{
-    public interface IFuncionesGerenteService
-    {
-        Task<List<Usuario>?> GetSolicitudesUsuario();
+namespace WebApp.Services.Interfaces;
 
-        Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente);
-    }
+public interface IFuncionesGerenteService
+{
+    Task<List<Usuario>?> GetSolicitudesUsuario();
+
+    Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente);
 }
