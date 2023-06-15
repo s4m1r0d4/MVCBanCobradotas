@@ -1,4 +1,4 @@
-namespace BancoMVC.Models;
+namespace BanCobradotas.Models;
 
 public class ErrorViewModel
 {
