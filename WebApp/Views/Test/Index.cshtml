@@ -1,0 +1,16 @@
+@* Solo añadir el modelo en caso de usar la manera 2 *@
+@model TestBoletosModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @foreach (Boleto item in Model.Boletos)
+    {
+        <div>@item.Fecha</div>
+    }
+
+</div>
