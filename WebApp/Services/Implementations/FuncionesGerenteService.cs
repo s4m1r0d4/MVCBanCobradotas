@@ -26,4 +26,9 @@ public class FuncionesGerenteService : IFuncionesGerenteService
     {
         return await db.Usuarios.Where(u => u.IDEstado == 1).ToListAsync();
     }
+
+    public async Task<Usuario?> FindUsuario(long id)
+    {
+        return await db.Usuarios.FirstOrDefaultAsync(u => u.IDUsuario == id);
+    }
 }

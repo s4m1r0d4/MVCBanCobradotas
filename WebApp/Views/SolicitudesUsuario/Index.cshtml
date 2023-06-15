@@ -1,0 +1,45 @@
+@model SolicitudesUsuarioModel
+
+@{
+    ViewData["Title"] = "FuncionesGerente";
+}
+
+<div class="row">
+    <h1 class="display">Solicitudes Usuario</h1>
+    <table class="thead-inverse" align="left">
+        <tr>
+            <th>ID Solicitud</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>CURP</th>
+            <th>Acción</th>
+        </tr>
+
+        <tbody>
+            @if (Model.SolicitudesUsuario is not null)
+            {
+                @foreach (Usuario data in Model.SolicitudesUsuario)
+                {
+                    <tr>
+                        <td>@data.IDUsuario</td>
+                        <td>@data.Nombre</td>
+                        <td>@data.Apellido</td>
+                        <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaNacimiento))</td>
+                        <td>@data.CURP</td>
+                        <td>
+                            <button>
+                                Aceptar
+                            </button>
+
+                            <form asp-action="Rechazar" asp-route-id="@data.IDUsuario" method="post">
+                                <input type="submit" value="Rechazar" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

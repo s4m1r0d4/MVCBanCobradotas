@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BanCobradotas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Services.Interfaces;
 
@@ -14,6 +15,7 @@ namespace WebApp.Controllers;
 // [Authorize(Policy = "CuentaBancoOnly")]
 // [Authorize] -> Así nomás iniciando sesión
 // [AllowAnonymous] -> Permite ingresar al controlador sin iniciar sesión
+[Authorize]
 public class TestController : Controller
 {
     // Agarrar el servicio del controlador para acceder la base de datos
