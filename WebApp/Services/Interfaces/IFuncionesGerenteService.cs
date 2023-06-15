@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BanCobradotas.Models;
 
-namespace WebApp.Services.Interfaces;
-
-public interface IFuncionesGerenteService
+namespace WebApp.Services.Interfaces
 {
+    public interface IFuncionesGerenteService
+    {
+        IAsyncEnumerable<Usuario>? GetSolicitudesUsuario();
 
+        Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente);
+    }
 }

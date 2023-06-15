@@ -1,4 +1,4 @@
-@model BanCobradotas.Models.Usuario
+@model BanCobradotas.Models.SolicitudesUsuarioModel;
 @{
     ViewData["Title"] = "FuncionesGerente";
 }
@@ -16,7 +16,7 @@
         <tbody>
             @if (ViewBag.SolicitudesUsuario is not null)
             {
-                @foreach (Usuario data in ViewBag.SolicitudesUsuario)
+                @foreach (var data in Model.SolicitudesUsuario)
                 {
                     <tr>
                         <td>@data.Nombre</td>
@@ -47,11 +47,11 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" asp-for="Category!.CategoryName">
+                        @* <input type="text" asp-for="Category!.CategoryName"> *@
                     </td>
 
                     <td>
-                        <input type="text" asp-for="Category!.Description">
+                        @* <input type="text" asp-for="Category!.Description"> *@
                     </td>
                 </tr>
 

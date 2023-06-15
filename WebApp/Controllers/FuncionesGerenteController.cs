@@ -17,11 +17,17 @@ namespace WebApp.Controllers;
 [Authorize(Policy = "GerenteOnly")]
 public class FuncionesGerenteController : Controller
 {
+    private readonly IFuncionesGerenteService service;
 
-    public async Task<IActionResult> SolicitudesUsuario()
+    public FuncionesGerenteController(IFuncionesGerenteService injectedService)
     {
-        // ViewBag.Solicitudes
+        service = injectedService;
+    }
 
+    public IActionResult SolicitudesUsuario()
+    {
+        var solicitudes = service.GetSolicitudesUsuario();
+        ViewBag.Solicitudes = solicitudes;
         return View();
     }
 
