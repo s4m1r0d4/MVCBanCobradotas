@@ -49,6 +49,9 @@ public class SolicitudesUsuarioController : Controller
         if (usr is null)
             return Problem("Usuario no encontrado");
 
+        db.Usuarios.Remove(usr);
+        await db.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 }
