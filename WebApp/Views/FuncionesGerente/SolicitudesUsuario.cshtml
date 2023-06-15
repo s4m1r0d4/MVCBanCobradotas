@@ -1,4 +1,5 @@
-@model BanCobradotas.Models.SolicitudesUsuarioModel;
+@model BanCobradotas.Models.SolicitudesUsuarioModel
+
 @{
     ViewData["Title"] = "FuncionesGerente";
 }
@@ -14,13 +15,15 @@
         </tr>
 
         <tbody>
-            @if (ViewBag.SolicitudesUsuario is not null)
+            @if (Model.SolicitudesUsuario is not null)
             {
                 @foreach (var data in Model.SolicitudesUsuario)
                 {
                     <tr>
                         <td>@data.Nombre</td>
                         <td>@data.Apellido</td>
+                        <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaNacimiento))</td>
+                        <td>@data.CURP</td>
                     </tr>
                 }
             }

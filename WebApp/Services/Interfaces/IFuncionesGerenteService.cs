@@ -4,7 +4,7 @@ namespace WebApp.Services.Interfaces
 {
     public interface IFuncionesGerenteService
     {
-        IAsyncEnumerable<Usuario>? GetSolicitudesUsuario();
+        Task<List<Usuario>?> GetSolicitudesUsuario();
 
         Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente);
     }

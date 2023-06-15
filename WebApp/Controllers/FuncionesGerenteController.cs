@@ -24,11 +24,16 @@ public class FuncionesGerenteController : Controller
         service = injectedService;
     }
 
-    public IActionResult SolicitudesUsuario()
+    public async Task<IActionResult> SolicitudesUsuario()
     {
-        var solicitudes = service.GetSolicitudesUsuario();
-        ViewBag.Solicitudes = solicitudes;
-        return View();
+        var solicitudes = await service.GetSolicitudesUsuario();
+
+        var model = new SolicitudesUsuarioModel()
+        {
+            SolicitudesUsuario = solicitudes
+        };
+
+        return View(model);
     }
 
 }

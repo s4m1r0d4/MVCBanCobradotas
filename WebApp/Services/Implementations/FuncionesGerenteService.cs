@@ -17,14 +17,13 @@ public class FuncionesGerenteService : IFuncionesGerenteService
         db = injectedContext;
     }
 
-    public async Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente)
+    public Task<string?> AcceptSolicitudUsuario(Usuario usr, Gerente gerente)
     {
         throw new NotImplementedException();
     }
 
-    public IAsyncEnumerable<Usuario>? GetSolicitudesUsuario()
+    public async Task<List<Usuario>?> GetSolicitudesUsuario()
     {
-        var res = db.Usuarios.Where(u => u.IDEstado == 1).AsAsyncEnumerable();
-        return res;
+        return await db.Usuarios.Where(u => u.IDEstado == 1).ToListAsync();
     }
 }
