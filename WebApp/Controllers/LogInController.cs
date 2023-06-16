@@ -36,7 +36,8 @@ public class LogInController : Controller
     {
         var (_, err) = await service.RequestCuentaUsuario(model);
 
-        ViewData["Mensaje"] = err;
+        if (err is not null)
+            ViewData["Mensaje"] = err;
 
         return View();
     }

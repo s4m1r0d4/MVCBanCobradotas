@@ -28,13 +28,20 @@
                         <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaNacimiento))</td>
                         <td>@data.CURP</td>
                         <td>
-                            <button>
-                                Aceptar
-                            </button>
+                            <div class="row">
+                                <div class="col">
+                                    <form asp-action="Aceptar" asp-route-id="@data.IDUsuario" method="post">
+                                        <input type="submit" value="Aceptar" class="btn btn-primary" />
+                                    </form>
+                                </div>
 
-                            <form asp-action="Rechazar" asp-route-id="@data.IDUsuario" method="post">
-                                <input type="submit" value="Rechazar" class="btn btn-danger" />
-                            </form>
+                                <div class="col">
+
+                                    <form asp-action="Rechazar" asp-route-id="@data.IDUsuario" method="post">
+                                        <input type="submit" value="Rechazar" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 }
