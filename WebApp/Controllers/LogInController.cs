@@ -52,7 +52,8 @@ public class LogInController : Controller
     {
         var (usr, err) = await service.GetCuentaIngreso(usuario, contrasena);
 
-        if (usr == null) {
+        if (usr == null)
+        {
             ViewData["Mensaje"] = err;
             return View();
         }
@@ -60,22 +61,27 @@ public class LogInController : Controller
         List<Claim> claims = new();
 
         string nombre = "Unknown";
-        if (usr.Empleado is not null) {
+        if (usr.Empleado is not null)
+        {
             nombre = usr.Empleado.Nombre;
             claims.Add(new Claim(ClaimTypes.Role, "Empleado"));
             claims.Add(new Claim("IDNomina", usr.Empleado.IDNomina.ToString()));
             claims.Add(new Claim("IDEmpleado", usr.Empleado.IDEmpleado.ToString()));
         }
 
-        if (usr.Gerente is not null) {
+        if (usr.Gerente is not null)
+        {
             nombre = usr.Gerente.Nombre;
             claims.Add(new Claim(ClaimTypes.Role, "Gerente"));
             claims.Add(new Claim("IDNomina", usr.Gerente.IDNomina.ToString()));
             claims.Add(new Claim("IDGerente", usr.Gerente.IDGerente.ToString()));
             claims.Add(new Claim("IDCuentaBancaria", usr.Gerente.IDCuentaBancaria.ToString()));
+            return RedirectToAction("IndexGerente", "FuncionesGerente");
+
         }
 
-        if (usr.UsuarioNavigation is not null) {
+        if (usr.UsuarioNavigation is not null)
+        {
             nombre = usr.UsuarioNavigation.Nombre;
             claims.Add(new Claim(ClaimTypes.Role, "Usuario"));
             claims.Add(new Claim("IDUsuario", usr.UsuarioNavigation.IDUsuario.ToString()));
@@ -95,7 +101,6 @@ public class LogInController : Controller
             new ClaimsPrincipal(claimsIdentity),
             properties
         );
-
         return RedirectToAction("Index", "Home");
     }
 
@@ -105,3 +110,5 @@ public class LogInController : Controller
         return View("Error!");
     }
 }
+
+

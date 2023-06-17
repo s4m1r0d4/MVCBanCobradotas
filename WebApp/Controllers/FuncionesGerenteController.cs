@@ -15,5 +15,10 @@ public class FuncionesGerenteController : Controller
         service = injectedService;
     }
 
+    public IActionResult IniciarSesion()
+    {
+        return View();
+    }
+
 
 }

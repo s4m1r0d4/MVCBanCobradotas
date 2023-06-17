@@ -6,6 +6,30 @@
     <h1>Historial de pagos</h1>
 </div>
 
-<div class="rectangle">
-    <p>Pagos</p>
+<div class="row">
+    <h1 class="display">Historial de cada prestamo</h1>
+    <table class="thead-inverse" align="left">
+        <tr>
+            <th>Pago N°</th>
+            <th>Cantidad del pago</th>
+            <th>Fecha del pago</th>
+        </tr>
+
+        <tbody>
+            @if (Model.HistorialPagos is not null)
+            {
+                @foreach (Pago data in Model.HistorialPagos)
+                {
+                    <tr>
+                        <td>@data.IDPago</td>
+                        <td>@data.Cantidad</td>
+                        <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.Fecha))</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+
 </div>
+
