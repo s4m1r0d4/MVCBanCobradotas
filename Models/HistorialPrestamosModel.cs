@@ -2,6 +2,5 @@ namespace BanCobradotas.Models;
 
 public class HistorialPrestamosModel
 {
-    public List<Prestamo>? MostrarPrestamo;
-
+    public List<Prestamo>? Prestamos;
 }

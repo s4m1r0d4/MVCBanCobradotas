@@ -14,15 +14,14 @@
             <th>Fecha de liquidacion</th>
         </tr>
         <tbody>
-                @foreach (Prestamo data in Model.MostrarPrestamo)
+                @foreach (Prestamo data in Model.Prestamos)
                 {
                 <tr>
                     <td>@data.IDPrestamo</td>
                     <td>@data.Cantidad</td>
-                    <td>//numero de pagos</td>
+                    <td>@data.Pagos.Count()</td>
                     <td>@data.FechaSolicitud</td>
-                    <td>
-                    </td>
+                    <td>@data.FechaLiquidacion</td>
                 </tr>
                     <div class="row">
                     <div class="col">
