@@ -7,19 +7,21 @@
 <div class="row">
     <h1 class="display">Empleados y clientes dados de alta</h1>
     <table class="thead-inverse" align="left">
-        <thead>
+        <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>FechaNacimiento</th>
-        </thead>
+        </tr>
         <tbody>
             @foreach (Empleado data in Model.EmpleadoAlta)
             {
+                <tr>
                 <td>empleado @data.IDEmpleado</td>
                 <td>@data.Nombre</td>
                 <td>@data.Apellido</td>
-                <td>@data.FechaNacimiento</td>
+                <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaNacimiento))</td>
+                <td>
                 <div class="row">
                     <div class="col">
                         <form asp-action="eliminar" asp-route-itemid="@data.IDEmpleado" method="post">
@@ -27,20 +29,37 @@
                         </form>
                     </div>
                 </div>
+                </td>
+                </tr>
             }
-            @foreach (Usuario data in Model.UsuariosAlta)
+        </tbody>
+    </table>
+    <br><br/>
+        <table class="thead-inverse" align="left">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>FechaNacimiento</th>
+        </tr>
+        <tbody>
+            @foreach (Usuario data in Model.UsuarioAlta)
             {
-                <td>Usuario @data.IDUsuario</td>
+                <tr>
+                <td>usuario @data.IDUsuario</td>
                 <td>@data.Nombre</td>
                 <td>@data.Apellido</td>
-                <td>@data.FechaNacimiento</td>
+                <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaNacimiento))</td>
+                <td>
                 <div class="row">
                     <div class="col">
-                        <form asp-action="eliminar" asp-route-itemid="@data.IDUsuario" method="post">
+                        <form asp-action="eliminarUsr" asp-route-itemid="@data.IDUsuario" method="post">
                             <input type="submit" value="eliminarUsuario" class="btn btn-primary" />
                         </form>
                     </div>
                 </div>
+                </td>
+                </tr>
             }
         </tbody>
     </table>
