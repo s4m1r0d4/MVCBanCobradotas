@@ -34,6 +34,7 @@ public class FuncionesGerenteController : Controller
     public async Task<IActionResult> AdministrarCuentas()
     {
         // TODO: Implement this
+    
         AdministrarCuentasModel model = new()
         {
             EmpleadoAlta = new(),
