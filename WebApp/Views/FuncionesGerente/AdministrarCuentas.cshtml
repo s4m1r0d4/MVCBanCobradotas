@@ -1,5 +1,4 @@
 @model AdministrarCuentasModel
-
 @{
     ViewData["Title"] = "FuncionesGerente";
 }
@@ -7,18 +6,43 @@
 
 <div class="row">
     <h1 class="display">Empleados y clientes dados de alta</h1>
-    <p>empleados</p>
+    <p>tabla empleados</p>
     <table class="thead-inverse" align="left">
         <tr>
-            <th>IDempleado</th>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>FechaNacimiento</th>
         </tr>
         <tbody>
-            
+            @foreach (Empleado data in Model.EmpleadoAlta)
+            {
+                <td>empleado @data.IDEmpleado</td>
+                <td>@data.Nombre</td>
+                <td>@data.Apellido</td>
+                <td>@data.FechaNacimiento</td>
+                <div class="row">
+                <div class="col">
+                    <form asp-action="eliminar" asp-route-itemid="@data.IDEmpleado" method="post">
+                        <input type="submit" value="eliminarEmpleado" class="btn btn-primary" />
+                    </form>
+                </div>
+                </div>
+            }
+            @foreach (Usuario data in Model.UsuariosAlta)
+            {
+                <td>Usuario @data.IDUsuario</td>
+                <td>@data.Nombre</td>
+                <td>@data.Apellido</td>
+                <td>@data.FechaNacimiento</td>
+                <div class="row">
+                <div class="col">
+                    <form asp-action="eliminar" asp-route-itemid="@data.IDUsuario" method="post">
+                        <input type="submit" value="eliminarUsuario" class="btn btn-primary" />
+                    </form>
+                </div>
+                </div>
+            }
         </tbody>
     </table>
-
-    <p>clientes</p>
 </div>
