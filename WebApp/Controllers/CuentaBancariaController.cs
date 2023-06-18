@@ -30,28 +30,25 @@ public class CuentaBancariaController : Controller
         return IDCuentaBancaria;
     }
 
-    public async Task<IActionResult> Index()
+    public string GetNombre()
     {
-        ClaimsPrincipal claimsPrincipal = HttpContext.User;
-
-        long cuentaID = GetIDCuentaBancaria();
-
-        var cuenta = await db.CuentasBancaria.FirstOrDefaultAsync(c => c.IDCuentaBancaria == cuentaID);
-
-        string nombre = HttpContext.User.Claims!.Where(c => c.Type == ClaimTypes.Name)
+        return HttpContext.User.Claims!.Where(c => c.Type == ClaimTypes.Name)
             .Select(c => c.Value)
             .SingleOrDefault() ?? "Unknown";
+    }
 
-
+    public async Task<IActionResult> Index()
+    {
+        long cuentaID = GetIDCuentaBancaria();
+        var cuenta = await db.CuentasBancaria.FirstOrDefaultAsync(c => c.IDCuentaBancaria == cuentaID);
         if (cuenta is null)
             return Problem("Error! La cuenta bancaria no existe");
 
         ViewData["Saldo"] = cuenta.Saldo;
         ViewData["NumCuenta"] = cuenta.IDCuentaBancaria;
-        ViewData["Nombre"] = nombre;
+        ViewData["Nombre"] = GetNombre();
 
         var prestamo = await db.GetPrestamoActivo(cuenta);
-
         if (prestamo == null)
             return View();
 
@@ -59,12 +56,19 @@ public class CuentaBancariaController : Controller
     }
 
     //verificar que el saldo en la cuenta sea 10,000MXN o mas.
-
     [HttpPost]
     public async Task<IActionResult> SolicitarPrestamo(SolicitarPrestamoModel model)
     {
-
         return View();
     }
 
+    public async Task<IActionResult> HistorialPrestamos()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IActionResult> HistorialPagos()
+    {
+        throw new NotImplementedException();
+    }
 }
