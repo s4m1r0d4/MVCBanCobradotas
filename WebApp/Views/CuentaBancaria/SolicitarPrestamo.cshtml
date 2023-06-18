@@ -10,8 +10,8 @@
 
     <p>Si tu saldo es menor a 10,000MXN no puedes pedir prestamo!</p>
     //cantidad
-    <form asp-controller="Prestamos" asp-action="Solicitar" method="post" class="pure-form">
-        <p>Ingresa el prestamo:</p>
+    <form asp-controller="CuentaBancaria" asp-action="SolicitarPrestamo" method="post" class="pure-form">
+        <p>Ingresa la cantidad:</p>
         <input type="number" value="cantidad" asp-for="Cantidad" required />
         //meses
         <p>Meses:</p>
