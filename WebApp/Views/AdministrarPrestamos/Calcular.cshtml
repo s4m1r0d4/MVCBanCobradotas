@@ -1,6 +1,6 @@
 @model Prestamo
 @{
-    ViewData["Title"] = "CalcularPrestamo";
+    ViewData["Title"] = "Calcular Préstamo";
 }
 
 @*
@@ -8,16 +8,73 @@ Se tiene que mostrar el comportamiento del cliente
 Se tiene que mostrar los últimos 10 préstamos
 *@
 
-<div>
-    <p>tasa de interes:</p>//mostrar el resultado del calculo de la tasa.
-    <p>cantidad: @Model.Cantidad</p>
-    <p>numero de meses: @Model.NumMeses</p>
+<h1>Calcular Préstamo</h1>
 
-    Calcular el prestamo
-    <input type="submit" value="Calcular" class="btn btn-primary" />
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IDPrestamo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IDPrestamo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaSolicitud)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaSolicitud)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumMeses)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumMeses)
+        </dd>
+        @if (@ViewData.ContainsKey("CalculatedPagoMensual"))
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PagoMensual)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PagoMensual)
+            </dd>
+        }
+        @if (@ViewData.ContainsKey("CalculatedInteres"))
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Interes)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Interes)
+            </dd>
+        }
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IDCuentaBancaria)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IDCuentaBancaria)
+        </dd>
+    </dl>
+
+@*     <input type="submit" value="Calcular" class="btn btn-primary" />
     <br><br />
     //aceptar el prestamo calculado
     <form asp-action="Aceptar" asp-route-id="@Model.IDPrestamo" method="post">
         <input type="submit" value="Aprobar" class="btn btn-primary" />
+    </form> *@
+</div>
+<div>
+    <form asp-action="Aceptar">
+        <input type="hidden" asp-for="IDPrestamo" />
+        <input type="submit" value="Aceptar" class="btn btn-primary" /> |
+        <a asp-action="Index">De regreso a las solicitudes</a>
     </form>
 </div>
