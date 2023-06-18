@@ -1,0 +1,34 @@
+@model HistorialPrestamosModel
+<div>
+    <p>Todas las solicitudes de los prestamos no aprobados</p>
+</div>
+
+<div>
+    <table class="table table-success table-striped">
+        <thead>
+            <th>ID Préstamo</th>
+            <th>Cantidad</th>
+            <th>Meses</th>
+            <th>Acción</th>
+        </thead>
+        <tbody>
+            @if (Model.Prestamos is not null)
+            {
+                @foreach (Prestamo data in Model.Prestamos)
+                {
+                    <tr>
+                        <td>@data.IDPrestamo</td>
+                        <td>@data.Cantidad</td>
+                        <td>@data.NumMeses</td>
+                        <td>
+                            <a asp-action="Calcular" asp-route-id="@data.IDPrestamo">
+                                @* <button class="btn btn-primary">Calcular</button> *@
+                                Calcular
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

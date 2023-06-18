@@ -3,18 +3,21 @@
     ViewData["Title"] = "CalcularPrestamo";
 }
 
+@*
+Se tiene que mostrar el comportamiento del cliente
+Se tiene que mostrar los últimos 10 préstamos
+*@
+
 <div>
     <p>tasa de interes:</p>//mostrar el resultado del calculo de la tasa.
-    @* <p>cantidad: @data.Cantidad</p>
-    <p>numero de meses: @data.NumMeses</p> *@
+    <p>cantidad: @Model.Cantidad</p>
+    <p>numero de meses: @Model.NumMeses</p>
 
-    //calcular el prestamo
+    Calcular el prestamo
     <input type="submit" value="Calcular" class="btn btn-primary" />
     <br><br />
     //aceptar el prestamo calculado
-@*     <form asp-action="Aceptar" asp-route-id="@data.IDPrestamo" method="post">
+    <form asp-action="Aceptar" asp-route-id="@Model.IDPrestamo" method="post">
         <input type="submit" value="Aprobar" class="btn btn-primary" />
-    </form> *@
-</div>
-</tbody>
+    </form>
 </div>
