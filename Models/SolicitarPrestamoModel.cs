@@ -7,6 +7,8 @@ namespace BanCobradotas.Models;
 
 public class SolicitarPrestamoModel
 {
-    public List<Prestamo>? SolicitarPrestamo;
+    public List<Prestamo>? HistorialPrestamos;
+
+    public Prestamo? SolicitudPrestamo;
 
 }
