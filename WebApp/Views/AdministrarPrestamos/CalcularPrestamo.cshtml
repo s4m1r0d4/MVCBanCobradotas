@@ -1,0 +1,25 @@
+@model CalcularPrestamoModel
+
+@{
+    ViewData["Title"] = "CalcularPrestamo";
+}
+
+<div>
+    <form asp-controller="AdministrarPrestamos" asp-action="CalcularPrestamo" method="post" class="pure-form">
+        <input type="submit" value="calcular" />
+        <tbody>
+            <th>la tasa de interes es:</th>
+            <th>Cantidad del prestamo solicitado:</th>
+            <th>Duracion (meses):</th>
+            @foreach (Prestamo data in Model.Mostrar) //wut
+            { 
+            <tr>
+            <td>//mostrar el resultado del calculo de la tasa.</td>
+            <td>@data.Cantidad</td>
+            <td>@data.NumMeses</td>
+            </tr>
+            <input type="submit"/>
+            }
+        </tbody>
+    </form>
+</div>
