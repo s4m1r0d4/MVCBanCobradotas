@@ -1,15 +1,30 @@
-@model BanCobradotas.Models.Prestamo
+@model SolicitarPrestamoModel
 @{
-    Layout = "_Layout";
+    ViewData["Title"] = "Prestamos";
 }
+
 
 <div>
     <p>Solicitar un prestamo</p>
 </div>
 <div>
-        <p>Si tu saldo es menor a 10,000MXN no puedes pedir prestamo!</p>
+
+    <p>Si tu saldo es menor a 10,000MXN no puedes pedir prestamo!</p>
+    //cantidad
+    <form asp-controller="Prestamos" asp-action="Solicitar" method="post" class="pure-form">
+        <p>Ingresa el prestamo:</p>
+        <input type="number" value="cantidad" asp-for="Cantidad" required />
+        //meses
+        <p>Meses:</p>
+        <input type="number" value="meses" asp-for="NumMeses" required />
         <div class="aceptar">
-        <input type="submit" value="solicitar Prestamo" class="pure-input-rounded" required
+            <input type="submit" value="solicitar Prestamo" class="pure-input-rounded" required
                 style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
         </div>
+
+    </form>
+    @foreach (Prestamo data in Model.SolicitarPrestamo)
+    {
+        
+    }
 </div>
