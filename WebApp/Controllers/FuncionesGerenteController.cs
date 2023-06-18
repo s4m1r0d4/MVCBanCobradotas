@@ -9,11 +9,11 @@ namespace WebApp.Controllers;
 [Authorize(Policy = "GerenteOnly")]
 public class FuncionesGerenteController : Controller
 {
-    private readonly IFuncionesGerenteService service;
+    private readonly BanCobradotasContext db;
 
-    public FuncionesGerenteController(IFuncionesGerenteService injectedService)
+    public FuncionesGerenteController(BanCobradotasContext injectedContext)
     {
-        service = injectedService;
+        db = injectedContext;
     }
 
     // Que DRY ni que nada
@@ -34,6 +34,7 @@ public class FuncionesGerenteController : Controller
     public async Task<IActionResult> AdministrarCuentas()
     {
         // TODO: Implement this
+    
         AdministrarCuentasModel model = new()
         {
             EmpleadoAlta = new(),
