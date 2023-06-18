@@ -1,0 +1,23 @@
+<div>
+    <p>Todas las solicitudes de los prestamos no aprobados</p>
+</div>
+
+<div>
+    <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+        <tr>
+        <tr>
+            <th>Cantidad</th>
+            <th>Meses</th>
+        </tr>
+        <tbody>
+                @foreach (Prestamo data in Model.HistorialPrestamos)
+                {
+                <tr>
+                    <td>@data.IDPrestamo</td>
+                    <td>@data.Cantidad</td>
+                    <td>@data.NumMeses</td>
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>
