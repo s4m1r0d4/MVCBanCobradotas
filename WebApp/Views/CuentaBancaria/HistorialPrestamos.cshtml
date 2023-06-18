@@ -5,17 +5,16 @@
 
 <div class="Prestamos">
     <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
-        <tr>
-        <tr>
+        <thead>
             <th>Folio del prestamo</th>
             <th>Cantidad</th>
             <th>Num Pago</th>
             <th>Fecha de solicitud</th>
             <th>Fecha de liquidacion</th>
-        </tr>
+        </thead>
         <tbody>
-                @foreach (Prestamo data in Model.Prestamos)
-                {
+            @foreach (Prestamo data in Model.Prestamos)
+            {
                 <tr>
                     <td>@data.IDPrestamo</td>
                     <td>@data.Cantidad</td>
@@ -23,7 +22,7 @@
                     <td>@data.FechaSolicitud</td>
                     <td>@data.FechaLiquidacion</td>
                 </tr>
-                }
+            }
         </tbody>
     </table>
 </div>
