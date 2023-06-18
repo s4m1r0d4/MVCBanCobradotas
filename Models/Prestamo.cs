@@ -17,7 +17,7 @@ public partial class Prestamo
 
     public long NumMeses { get; set; }
 
-    public double PagoMensual { get; set; }
+    public double? PagoMensual { get; set; }
 
     public double Interes { get; set; }
 
@@ -42,7 +42,7 @@ public partial class Prestamo
 
     [ForeignKey("IDNomina")]
     [InverseProperty("Prestamos")]
-    public virtual Nomina IDNominaNavigation { get; set; } = null!;
+    public virtual Nomina? IDNominaNavigation { get; set; }
 
     [InverseProperty("IDPrestamoNavigation")]
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();

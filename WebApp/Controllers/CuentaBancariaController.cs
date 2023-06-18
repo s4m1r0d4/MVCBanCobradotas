@@ -102,11 +102,6 @@ public class CuentaBancariaController : Controller
         model.IDEstado = 1;
         model.IDCuentaBancaria = cuentaID;
 
-        // TODO: Esto es un chanchullazo. Arreglarlo a la hora de calcular el prestamo
-        model.PagoMensual = 1;
-        model.Interes = 11;
-
-
         db.Prestamos.Add(model);
         int affected = await db.SaveChangesAsync();
 

@@ -5,14 +5,13 @@
 
 <div>
     <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
-        <tr>
-        <tr>
+        <thead>
             <th>Cantidad</th>
             <th>Meses</th>
-        </tr>
+        </thead>
         <tbody>
-                @foreach (Prestamo data in Model.Prestamos)
-                {
+            @foreach (Prestamo data in Model.Prestamos)
+            {
                 <tr>
                     <td>@data.IDPrestamo</td>
                     <td>@data.Cantidad</td>
@@ -20,12 +19,12 @@
                 </tr>
                 <div class="row">
                     <div class="col">
-                    <a href="@Url.Action("CalcularPrestamo", "AdministrarPrestamos")">
-                        <button class="ingreso">Calcular</button>
-                    </a>
+                        <a href="@Url.Action("CalcularPrestamo", "AdministrarPrestamos", @data.IDPrestamo)">
+                            <button class="ingreso">Calcular</button>
+                        </a>
                     </div>
                 </div>
-                }
+            }
         </tbody>
     </table>
 </div>

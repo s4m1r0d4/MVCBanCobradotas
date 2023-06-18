@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Sat Jun 17 23:50:37 2023
+-- File generated with SQLiteStudio v3.4.4 on Sun Jun 18 01:41:43 2023
 --
 -- Text encoding used: UTF-8
 --
@@ -169,8 +169,7 @@ CREATE TABLE IF NOT EXISTS Prestamo (
     NumMeses         INTEGER NOT NULL
                              CHECK (NumMeses >= 6 AND 
                                     NumMeses <= 36),
-    PagoMensual      REAL    NOT NULL
-                             CHECK (PagoMensual > 0),
+    PagoMensual      REAL    CHECK (PagoMensual > 0),
     Interes                  NOT NULL
                              CHECK (Interes > 10),
     Cantidad         REAL    NOT NULL
@@ -185,6 +184,7 @@ CREATE TABLE IF NOT EXISTS Prestamo (
                                                           ON UPDATE CASCADE
 );
 
+INSERT INTO Prestamo (IDPrestamo, FechaSolicitud, FechaAprobacion, FechaLiquidacion, NumMeses, PagoMensual, Interes, Cantidad, IDEstado, IDCuentaBancaria, IDNomina) VALUES (2, '2023-06-17 23:54:05.1736101', NULL, NULL, 36, 1.0, 11.0, 200.0, 1, 1, NULL);
 
 -- Table: Usuario
 DROP TABLE IF EXISTS Usuario;
