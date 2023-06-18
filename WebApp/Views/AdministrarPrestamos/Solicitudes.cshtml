@@ -18,6 +18,13 @@
                     <td>@data.Cantidad</td>
                     <td>@data.NumMeses</td>
                 </tr>
+                <div class="row">
+                    <div class="col">
+                    <a href="@Url.Action("CalcularPrestamo", "AdministrarPrestamos")">
+                        <button class="ingreso">Calcular</button>
+                    </a>
+                    </div>
+                </div>
                 }
         </tbody>
     </table>
