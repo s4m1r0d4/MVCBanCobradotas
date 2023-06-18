@@ -64,7 +64,20 @@ public class CuentaBancariaController : Controller
 
     public async Task<IActionResult> HistorialPrestamos()
     {
-        throw new NotImplementedException();
+        long cuentaID = GetIDCuentaBancaria();
+        var cuenta = await db.CuentasBancaria.FirstOrDefaultAsync(c => c.IDCuentaBancaria == cuentaID);
+        if (cuenta is null)
+            return Problem("Error! La cuenta bancaria no existe");
+
+        var prestamos = await db.Prestamos.Where(p => p.IDCuentaBancaria == cuentaID)
+                            .Include(p => p.Pagos).ToListAsync();
+
+        HistorialPrestamosModel model = new()
+        {
+            Prestamos = prestamos
+        };
+
+        return View(model);
     }
 
     public async Task<IActionResult> HistorialPagos()
