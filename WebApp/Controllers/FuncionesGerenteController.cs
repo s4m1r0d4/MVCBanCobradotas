@@ -31,4 +31,34 @@ public class FuncionesGerenteController : Controller
     }
 
 
+    public async Task<IActionResult> AdministrarCuentas()
+    {
+        // TODO: Implement this
+        AdministrarCuentasModel model = new()
+        {
+            EmpleadoAlta = new(),
+            UsuariosAlta = new()
+        };
+        return View(model);
+    }
+
+    public async Task<IActionResult> CrearEmpleado()
+    {
+        // TODO: Implement this
+        return View();
+    }
+
+    public async Task<IActionResult> Reportes()
+    {
+        // TODO: Implement this
+        return View();
+    }
+
+    public async Task<IActionResult> Vacaciones()
+    {
+        // TODO: Implement this
+        return View();
+    }
+
+
 }
