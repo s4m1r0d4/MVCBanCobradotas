@@ -1,4 +1,4 @@
-@model SolicitarPrestamoModel
+@model Prestamo
 @{
     ViewData["Title"] = "Prestamos";
 }
@@ -13,12 +13,23 @@
     <form asp-controller="CuentaBancaria" asp-action="SolicitarPrestamo" method="post" class="pure-form">
         <p>Ingresa la cantidad:</p>
         <input type="number" value="cantidad" asp-for="Cantidad" required />
-        //meses
         <p>Meses:</p>
-        <input type="number" value="meses" asp-for="NumMeses" required />
+        <select asp-for="NumMeses">
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
+            <option value="36">36</option>
+        </select>
         <div class="aceptar">
-            <input type="submit" value="solicitar Prestamo" class="pure-input-rounded" required
+            <input type="submit" class="pure-input-rounded" required
                 style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
         </div>
     </form>
+
+    @if (ViewData.ContainsKey("Msg"))
+    {
+        <div class="container">
+            @ViewData["Msg"]
+        </div>
+    }
 </div>

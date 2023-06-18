@@ -27,7 +27,7 @@ public partial class Prestamo
 
     public long IDCuentaBancaria { get; set; }
 
-    public long IDNomina { get; set; }
+    public long? IDNomina { get; set; }
 
     [InverseProperty("IDPrestamoNavigation")]
     public virtual ICollection<Boleto> Boletos { get; set; } = new List<Boleto>();

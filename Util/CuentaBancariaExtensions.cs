@@ -28,10 +28,11 @@ public static class CuentaBancariaExtensions
         var prestamos = await db.Prestamos
                                 .Where(p => p.IDCuentaBancaria == cuenta.IDCuentaBancaria)
                                 .Where(p => p.FechaLiquidacion == null)
+                                .Include(p => p.Pagos)
                                 .ToListAsync();
 
         if (prestamos == null) return null;
 
-        return prestamos.OrderByDescending(p => p.FechaAprobacion).First();
+        return prestamos.OrderByDescending(p => p.FechaAprobacion).FirstOrDefault();
     }
 }

@@ -1,3 +1,4 @@
+@model HistorialPrestamosModel
 <div>
     <p>Todas las solicitudes de los prestamos no aprobados</p>
 </div>
@@ -10,7 +11,7 @@
             <th>Meses</th>
         </tr>
         <tbody>
-                @foreach (Prestamo data in Model.HistorialPrestamos)
+                @foreach (Prestamo data in Model.Prestamos)
                 {
                 <tr>
                     <td>@data.IDPrestamo</td>
