@@ -45,11 +45,16 @@ public partial class BanCobradotasContext : DbContext
         }
 
         string fileName = "WebApp/BanCobradotas.db";
-        string rootDirectory = Directory.GetParent(Environment.CurrentDirectory)!
-                                    .Parent!
-                                    .Parent!
-                                    .Parent!
-                                    .FullName;
+        string rootDirectory = Environment.CurrentDirectory;
+
+        int steps = 0;
+        while (!rootDirectory.EndsWith("BancoMVC")) {
+            if (steps > 10)
+                throw new Exception("Couldn't find root directory");
+
+            rootDirectory = Directory.GetParent(rootDirectory)!.FullName;
+            ++steps;
+        }
 
         string path = Path.Combine(rootDirectory, fileName);
         string connectionString = $"Filename={path}";

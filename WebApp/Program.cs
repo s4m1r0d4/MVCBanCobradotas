@@ -18,7 +18,6 @@ builder.Services.AddDbContext<BanCobradotasContext>(options =>
 );
 
 builder.Services.AddScoped<ICuentaIngresoService, CuentaIngresoService>();
-builder.Services.AddScoped<IFuncionesGerenteService, FuncionesGerenteService>();
 builder.Services.AddScoped<ITestService, TestService>();
 // TODO: add the rest of the services
 
