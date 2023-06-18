@@ -2,23 +2,24 @@
     ViewData["Title"] = "Pagina Principal";
 }
 
-@if (ViewData.ContainsKey("nombreUsuario"))
+@if (ViewData.ContainsKey("Nombre"))
 {
-    <h2>@ViewData["nombreUsuario"]</h2>
+    <h2>@ViewData["Nombre"]</h2>
 }
+<div>
+    <a href="AdministrarCuentas">
+        <button class="ingreso">Administrador de cuentas</button>
+    </a>
 
-<a href="AdministrarCuentas.cshtml">
-    <button class="ingreso">Administrador de cuentas</button>
-</a>
+    <a href="CrearEmpleado">
+        <button class="ingreso">Crear empleado</button>
+    </a>
 
-<a href="CrearEmpleado.cshtml">
-    <button class="ingreso">Crear empleado</button>
-</a>
+    <a href="Reportes">
+        <button class="ingreso">Reportes</button>
+    </a>
 
-<a href="Reportes.cshtml">
-    <button class="ingreso">Reportes</button>
-</a>
-
-<a href="Vacaciones.cshtml">
-    <button class="ingreso">Vacaciones</button>
-</a>
+    <a href="Vacaciones">
+        <button class="ingreso">Vacaciones</button>
+    </a>
+</div>
