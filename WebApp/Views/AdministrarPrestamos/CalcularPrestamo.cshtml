@@ -1,32 +1,27 @@
-@model CalcularPrestamoModel
-
+@model Prestamo
 @{
     ViewData["Title"] = "CalcularPrestamo";
 }
 
 <div>
-
-        <input type="submit" value="calcular" />
-        <tbody>
-            <th>la tasa de interes es:</th>
-            <th>Cantidad del prestamo solicitado:</th>
-            <th>Duracion (meses):</th>
-            @foreach (Prestamo data in Model.Mostrar) //wut
-            { 
-            <tr>
+    <input type="submit" value="calcular" />
+    <tbody>
+        <th>la tasa de interes es:</th>
+        <th>Cantidad del prestamo solicitado:</th>
+        <th>Duracion (meses):</th>
+        <tr>
             <td>//mostrar el resultado del calculo de la tasa.</td>
             <td>@data.Cantidad</td>
             <td>@data.NumMeses</td>
-            </tr>
-            //calcular el prestamo
-            <input type="submit" value="Calcular" class="btn btn-primary"/>
-            <br><br/>
-            //aceptar el prestamo calculado
-            <form asp-action="Aceptar" asp-route-id="@data.IDPrestamo" method="post">
-                <input type="submit" value="Aprobar" class="btn btn-primary" />
-            </form>
-            }
-            </div>
-        </tbody>
+        </tr>
+        //calcular el prestamo
+        <input type="submit" value="Calcular" class="btn btn-primary" />
+        <br><br />
+        //aceptar el prestamo calculado
+        <form asp-action="Aceptar" asp-route-id="@data.IDPrestamo" method="post">
+            <input type="submit" value="Aprobar" class="btn btn-primary" />
+        </form>
+</div>
+</tbody>
 
 </div>
