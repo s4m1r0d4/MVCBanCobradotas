@@ -92,7 +92,7 @@ public class SolicitudesUsuarioController : Controller
         usr.IDCuentaBancaria = cb.IDCuentaBancaria;
         usr.IDCuentaIngreso = cuentaIngresoID;
         usr.IDNomina = long.Parse(idnomina_str);
-        usr.IDEstado = 2;
+        usr.IDEstado = 2; // En espera
 
         affected = await db.SaveChangesAsync();
         if (affected == 0)
