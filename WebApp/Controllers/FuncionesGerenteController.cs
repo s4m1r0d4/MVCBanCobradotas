@@ -32,6 +32,12 @@ public class FuncionesGerenteController : Controller
         return View();
     }
 
+    public IActionResult AdministrarCuentas()
+    {
+        return View();
+    }
+
+    [HttpGet]
     public async Task<IActionResult> AdministrarCuentas(long? id, long? id2)
     {
         // TODO: Implement this
@@ -95,15 +101,12 @@ public class FuncionesGerenteController : Controller
         return RedirectToAction(nameof(AdministrarCuentas));
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CrearEmpleado(Empleado model)
+    public IActionResult CrearEmpleado()
     {
         //RQF8: El empleado será solo generado por el Gerente.
         // TODO: Implement this
-        db.Empleados.Add(model);
-        int affected = await db.SaveChangesAsync();
 
-        ViewData["Msg"] = "Empleado Creado con Exito";
+
 
         return View();
     }
