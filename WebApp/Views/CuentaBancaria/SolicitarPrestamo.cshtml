@@ -4,12 +4,12 @@
 }
 
 <div>
-    <p>Solicitar un prestamo</p>
+    <h2>Solicitar un prestamo</h2>
 </div>
-<div>
-
-    <p>Si tu saldo es menor a 10,000MXN no puedes pedir prestamo!</p>
-    //cantidad
+<div class="general">
+    <div>
+            <p>Si tu saldo es menor a 10,000MXN no puedes pedir prestamo!</p>
+    </div>
     <form asp-controller="CuentaBancaria" asp-action="SolicitarPrestamo" method="post" class="pure-form">
         <p>Ingresa la cantidad:</p>
         <input type="number" value="cantidad" asp-for="Cantidad" required />
@@ -21,7 +21,7 @@
             <option value="36">36</option>
         </select>
         <div class="aceptar">
-            <input type="submit" class="pure-input-rounded" required
+            <input type="submit" class="pure-input-rounded" value="Solicitar" required
                 style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
         </div>
     </form>

@@ -1,6 +1,8 @@
 @model Empleado
+@{
+    ViewData["Title"] = "Empleado";
+}
 
-<div>
     <h1>Crear un empleado</h1>
     <form asp-controller="FuncionesGerente" asp-action="CrearEmpleado" method="Post" class="pure-form">
         <br><br/>
@@ -12,10 +14,10 @@
         <br><br/>
         <p>Ingresa el Fecha De nacimiento:</p>
         <input type="Date" asp-for="FechaNacimiento" required/>
+        <br><br/>
     <div class="aceptar">
-            <input type="submit" class="pure-input-rounded" required
-                style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
-        </div>
+            <input type="submit" class="pure-input-rounded" value="Crear empleado" required
+            style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
+    </div>
     </form>
 
-</div>

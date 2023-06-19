@@ -1,34 +1,28 @@
-@{
-    ViewData["Title"] = "Pagina Principal";
-}
-
 @if (ViewData.ContainsKey("Nombre"))
 {
     <h2>@ViewData["Nombre"]</h2>
 }
-
-<div class="container">
-    
+    <br><br/>
+    <h1 class="animate__backInLeft">Administracion</h1>
     <a href="@Url.Action("Index", "AdministrarPrestamos")">
-        <button class="btn btn-primary">Solicitudes de Préstamos</button>
+        <button class="btn btn-secondary">Solicitudes de Préstamos</button>
     </a>
-
     <a href="@Url.Action("AdministrarCuentas", "FuncionesGerente")">
-        <button class="btn btn-primary">Administrador de cuentas</button>
+        <button class="btn btn-secondary">Administrador de cuentas</button>
     </a>
-
+     
     <a href="@Url.Action("CrearEmpleado", "FuncionesGerente")">
-        <button class="btn btn-primary">Crear empleado</button>
+        <button class="btn btn-secondary">Crear empleado</button>
     </a>
 
     <a href="@Url.Action("Reportes", "FuncionesGerente")">
-        <button class="btn btn-primary">Reportes</button>
+        <button class="btn btn-secondary">Reportes</button>
     </a>
-
+        <br><br/>
+    <h1 class="animate__backInLeft">Personal</h1>
     <a href="@Url.Action("Vacaciones", "FuncionesGerente")">
-        <button class="btn btn-primary">Vacaciones</button>
+        <button class="btn btn-outline-secondary">Vacaciones</button>
     </a>
     <a href="@Url.Action("Index", "CuentaBancaria")">
-        <button class="btn btn-primary">CuentaBancaria</button>
+        <button class="btn btn-outline-secondary">CuentaBancaria</button>
     </a>
-</div>
