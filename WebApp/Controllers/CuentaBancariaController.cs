@@ -136,7 +136,7 @@ public class CuentaBancariaController : Controller
     {
         long cuentaID = GetIDCuentaBancaria();
         var prestamos = await db.Prestamos.Where(p => p.IDCuentaBancaria == cuentaID && p.FechaAprobacion != null)
-                            .Include(p => p.Pagos).ToListAsync();
+                            .ToListAsync();
 
         HistorialPrestamosModel model = new()
         {
@@ -146,7 +146,7 @@ public class CuentaBancariaController : Controller
         return View(model);
     }
 
-    public async Task<IActionResult> HistorialPagos()
+    public async Task<IActionResult> HistorialPagos(long? id)
     {
         // var pagos = await db.Pagos.Where(p => p.IDPago == cuentaID && p.FechaAprobacion != null)
         //                     .Include(p => p.Pagos).ToListAsync();
@@ -156,7 +156,17 @@ public class CuentaBancariaController : Controller
         //     Prestamos = prestamos
         // };
 
-        // return View(model);
-        return View();
+        if (id is null)
+            return RedirectToAction(nameof(HistorialPrestamos));
+
+        var model = await db.Prestamos
+                            .Where(p => p.IDPrestamo == id)
+                            .Include(p => p.Pagos)
+                            .FirstOrDefaultAsync();
+
+        if (model is null)
+            return RedirectToAction(nameof(HistorialPrestamos));
+
+        return View(model);
     }
 }
