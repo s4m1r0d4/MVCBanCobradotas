@@ -103,6 +103,7 @@ public class LogInController : Controller
         if (usr.Usuario is not null) {
             return RedirectToAction("Index", "CuentaBancaria");
         }
+
         return RedirectToAction("Index", "Home");
     }
 

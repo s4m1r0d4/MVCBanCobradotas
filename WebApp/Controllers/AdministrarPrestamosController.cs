@@ -26,6 +26,9 @@ public class AdministrarPrestamosController : Controller
         {
             Prestamos = solicitudes
         };
+        if (TempData.ContainsKey("Msg")) {
+            ViewData["Msg"] = TempData["Msg"];
+        }
         return View(model);
     }
 
@@ -97,12 +100,14 @@ public class AdministrarPrestamosController : Controller
             return RedirectToAction("Index");
 
         var prestamo = await db.Prestamos.FirstOrDefaultAsync(p => p.IDPrestamo == id);
-        if (prestamo is null)
-            return RedirectToAction("Index");
+        if (prestamo is null) {
+            TempData["Msg"] = "Prestamo no encontrado";
+            return RedirectToAction(nameof(Index));
+        }
 
         // RQF10: El empleado podrá aceptar los préstamos de 6 y 12 meses.
         if (HttpContext.User.IsInRole("Empleado") && prestamo.NumMeses > 12) {
-            ViewData["Msg"] = "El empleado podrá aceptar los préstamos de 6 y 12 meses";
+            TempData["Msg"] = "El empleado solo puede aceptar los préstamos de 6 y 12 meses";
             return RedirectToAction(nameof(Index));
         }
 
@@ -114,11 +119,11 @@ public class AdministrarPrestamosController : Controller
 
         int affected = await db.SaveChangesAsync();
         if (affected != 1) {
-            ViewData["Msg"] = "Error aceptando el préstamo";
+            TempData["Msg"] = "Error aceptando el préstamo";
             return RedirectToAction(nameof(Index));
         }
 
-        ViewData["Msg"] = "Préstamo aceptado exitósamente";
+        TempData["Msg"] = "Préstamo aceptado exitósamente";
         return RedirectToAction(nameof(Index));
     }
 }
