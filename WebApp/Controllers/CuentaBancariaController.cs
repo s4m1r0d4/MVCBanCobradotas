@@ -37,6 +37,17 @@ public class CuentaBancariaController : Controller
             .SingleOrDefault() ?? "Unknown";
     }
 
+    public long GetIDPrestamo()
+    {
+        ClaimsPrincipal claimsPrincipal = HttpContext.User;
+
+        long IDPrestamo = long.Parse(claimsPrincipal.Claims!.Where(c => c.Type == "IDPrestamo")
+            .Select(c => c.Value)
+            .SingleOrDefault()!);
+
+        return IDPrestamo;
+    }
+
     public async Task<IActionResult> Index()
     {
         long cuentaID = GetIDCuentaBancaria();
@@ -137,6 +148,14 @@ public class CuentaBancariaController : Controller
 
     public async Task<IActionResult> HistorialPagos()
     {
-        throw new NotImplementedException();
+        var pagos = await db.Pagos.Where(p => p.IDPago == cuentaID && p.FechaAprobacion != null)
+                            .Include(p => p.Pagos).ToListAsync();
+
+        HistorialPrestamosModel model = new()
+        {
+            Prestamos = prestamos
+        };
+
+        return View(model);
     }
 }

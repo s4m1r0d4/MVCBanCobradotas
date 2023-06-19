@@ -1,3 +1,4 @@
+@model Usuario
 <div>
     <h1>Generar reportes</h2>
     <form asp-action="Reportes" asp-controller="FuncionesGerenteController" method="POST" >
@@ -8,7 +9,7 @@
     <option value="opcion3">Mes</option>
     </select>
     <p>Cliente</p>
-    
+    <input type="text" placeholder="Nombre cliente" asp-for="Nombre"/>
     </form>
     <div class="aceptar">
         <input type="submit" class="pure-input-rounded" required value="generar reporte"
