@@ -14,62 +14,55 @@ Se tiene que mostrar los últimos 10 préstamos
     <h4>Detalles</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IDPrestamo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IDPrestamo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FechaSolicitud)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FechaSolicitud)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NumMeses)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NumMeses)
         </dd>
-        @if (@ViewData.ContainsKey("CalculatedPagoMensual"))
+        @if (Model.PagoMensual != null)
         {
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.PagoMensual)
             </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PagoMensual)
+            <dd class="col-sm-10">
+                @String.Format("{0:C2}", Model.PagoMensual)
             </dd>
         }
-        @if (@ViewData.ContainsKey("CalculatedInteres"))
+        @if (Model.Interes != null)
         {
-            <dt class = "col-sm-2">
+            <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Interes)
             </dt>
-            <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.Interes)
+            <dd class="col-sm-10">
+                @String.Format("{0:P1}", Model.Interes)
             </dd>
         }
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cantidad)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             $@Html.DisplayFor(model => model.Cantidad)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IDCuentaBancaria)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IDCuentaBancaria)
         </dd>
     </dl>
-
-@*     <input type="submit" value="Calcular" class="btn btn-primary" />
-    <br><br />
-    //aceptar el prestamo calculado
-    <form asp-action="Aceptar" asp-route-id="@Model.IDPrestamo" method="post">
-        <input type="submit" value="Aprobar" class="btn btn-primary" />
-    </form> *@
 </div>
 <div>
     <form asp-action="Aceptar">
@@ -78,3 +71,38 @@ Se tiene que mostrar los últimos 10 préstamos
         <a asp-action="Index">De regreso a las solicitudes</a>
     </form>
 </div>
+
+@{
+    if (ViewData.ContainsKey("ultimosPrestamos"))
+    {
+        List<Prestamo> prestamos = (List<Prestamo>)ViewData["ultimosPrestamos"];
+
+        if (prestamos.Any())
+        {
+            <div>
+                <h3>Últimos préstamos: </h3>
+                <table>
+                    <thead>
+                        <th>Folio del prestamo</th>
+                        <th>Cantidad</th>
+                        <th>Num Pago</th>
+                        <th>Fecha de solicitud</th>
+                        <th>Fecha de liquidacion</th>
+                    </thead>
+                    <tbody>
+                        @foreach (Prestamo data in prestamos)
+                        {
+                            <tr>
+                                <td>@data.IDPrestamo</td>
+                                <td>@data.Cantidad</td>
+                                <td>@data.Pagos.Count()</td>
+                                <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}",data.FechaSolicitud))</td>
+                                <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaLiquidacion))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    }
+}

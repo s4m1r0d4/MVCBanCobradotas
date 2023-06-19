@@ -32,7 +32,6 @@ public class FuncionesGerenteController : Controller
         return View();
     }
 
-
     public async Task<IActionResult> AdministrarCuentas(long? id, long? id2)
     {
         // TODO: Implement this
@@ -61,7 +60,6 @@ public class FuncionesGerenteController : Controller
         }
 
         return View(model2);
-
     }
 
     [HttpPost]
@@ -104,7 +102,7 @@ public class FuncionesGerenteController : Controller
         // TODO: Implement this
         db.Empleados.Add(model);
         int affected = await db.SaveChangesAsync();
-        
+
         ViewData["Msg"] = "Empleado Creado con Exito";
 
         return View();
