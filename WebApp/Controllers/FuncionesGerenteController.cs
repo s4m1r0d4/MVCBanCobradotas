@@ -66,7 +66,6 @@ public class FuncionesGerenteController : Controller
         }
 
         return View(model2);
-
     }
 
     [HttpPost]
@@ -106,6 +105,8 @@ public class FuncionesGerenteController : Controller
     {
         //RQF8: El empleado será solo generado por el Gerente.
         // TODO: Implement this
+
+
 
         return View();
     }
