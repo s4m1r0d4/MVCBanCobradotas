@@ -100,10 +100,15 @@ public class LogInController : Controller
             return RedirectToAction("Index", "FuncionesGerente");
         }
 
-        if(usr.Usuario is not null)
-        {
+        if (usr.Usuario is not null) {
             return RedirectToAction("Index", "CuentaBancaria");
         }
+        return RedirectToAction("Index", "Home");
+    }
+
+    public async Task<IActionResult> LogOut()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
     }
 
