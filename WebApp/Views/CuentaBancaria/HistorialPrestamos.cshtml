@@ -11,6 +11,7 @@
             <th>Num Pago</th>
             <th>Fecha de solicitud</th>
             <th>Fecha de liquidacion</th>
+            <th>Historial de Pagos</th>
         </thead>
         <tbody>
             @foreach (Prestamo data in Model.Prestamos)
@@ -21,6 +22,9 @@
                     <td>@data.Pagos.Count()</td>
                     <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}",data.FechaSolicitud))</td>
                     <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaLiquidacion))</td>
+                    <td>
+                        <a asp-action="HistorialPagos" asp-route-id="@data.IDPrestamo">Ver historial</a>
+                    </td>
                 </tr>
             }
         </tbody>

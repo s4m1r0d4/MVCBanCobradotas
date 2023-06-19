@@ -34,9 +34,14 @@ public class AdministrarPrestamosController : Controller
 
         // RQNF27: Los préstamos deben de durar en el archivo hasta 6 meses después de la eliminación del usuario que tenía asignado dicho(s) préstamo(s).
         var seisMeses = new TimeSpan(60, 0, 0, 0);
-        var prestamosDeUsuarioEliminado = db.Prestamos.Where(p => (p.IDCuentaBancaria == null) && (DateTime.Now - p.FechaAprobacion > seisMeses));
-        if (prestamosDeUsuarioEliminado.Any()) {
-            db.Prestamos.RemoveRange(prestamosDeUsuarioEliminado);
+        var prestamosDeUsuarioEliminado = await db.Prestamos
+            .Where(p => (p.IDCuentaBancaria == null))
+            .ToListAsync();
+
+        var prestamosCaducos = prestamosDeUsuarioEliminado.Where(p => DateTime.Now - p.FechaAprobacion > seisMeses);
+
+        if (prestamosCaducos.Any()) {
+            db.Prestamos.RemoveRange(prestamosCaducos);
             int affected = await db.SaveChangesAsync();
             if (affected == 0)
                 return Problem("Error eliminando los préstamos de usuarios eliminados");
@@ -106,8 +111,16 @@ public class AdministrarPrestamosController : Controller
         }
 
         double pagoMensual = pagoTotal / prestamo.NumMeses;
-        prestamo.Interes = interes;
+        prestamo.Interes = interes * 100;
         prestamo.PagoMensual = pagoMensual;
+
+        int affected = await db.SaveChangesAsync();
+        if (affected != 1) {
+            TempData["Msg"] = "Error calculando el préstamo";
+            return RedirectToAction(nameof(Index));
+        }
+
+        TempData["Msg"] = "Préstamo calculado exitósamente";
 
         return View(prestamo);
     }

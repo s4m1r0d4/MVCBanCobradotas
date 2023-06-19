@@ -47,7 +47,7 @@ Se tiene que mostrar los últimos 10 préstamos
                 @Html.DisplayNameFor(model => model.Interes)
             </dt>
             <dd class="col-sm-10">
-                @String.Format("{0:P1}", Model.Interes)
+                @String.Format("{0:P1}", (Model.Interes / 100))
             </dd>
         }
         <dt class="col-sm-2">
