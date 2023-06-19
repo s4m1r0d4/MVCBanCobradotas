@@ -38,15 +38,21 @@ public class AdministrarPrestamosController : Controller
         if (id is null)
             return View();
 
+        var prestamo = await db.Prestamos
+                        .Include(p => p.IDCuentaBancariaNavigation)
+                        .ThenInclude(cuentab => cuentab.Gerente)
+                        .Include(p => p.IDCuentaBancariaNavigation)
+                        .ThenInclude(cuentab => cuentab.Usuario)
+                        .FirstOrDefaultAsync(p => p.IDPrestamo == id);
+        if (prestamo is null)
+            return Problem("Prestamo no encontrado");
+
+        // Calcular la tasa de interés
         string role = HttpContext.User.Claims!.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).FirstOrDefault()!;
         if (role == "Empleado") {
 
         }
 
-        var prestamo = await db.Prestamos.FirstOrDefaultAsync(p => p.IDPrestamo == id);
-
-        if (prestamo is null)
-            return Problem("Prestamo no encontrado");
 
         return View(prestamo);
     }

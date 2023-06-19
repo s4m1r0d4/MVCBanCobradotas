@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Sun Jun 18 01:41:43 2023
+-- File generated with SQLiteStudio v3.4.4 on Sun Jun 18 22:13:50 2023
 --
 -- Text encoding used: UTF-8
 --
@@ -65,6 +65,8 @@ CREATE TABLE IF NOT EXISTS DiaVacacion (
                                                          ON UPDATE CASCADE
 );
 
+INSERT INTO DiaVacacion (IDDiaVacacion, Fecha, IDGerente) VALUES (1, '0001-01-01 00:00:00', NULL);
+INSERT INTO DiaVacacion (IDDiaVacacion, Fecha, IDGerente) VALUES (2, '0001-01-01 00:00:00', NULL);
 
 -- Table: Empleado
 DROP TABLE IF EXISTS Empleado;
@@ -170,8 +172,7 @@ CREATE TABLE IF NOT EXISTS Prestamo (
                              CHECK (NumMeses >= 6 AND 
                                     NumMeses <= 36),
     PagoMensual      REAL    CHECK (PagoMensual > 0),
-    Interes                  NOT NULL
-                             CHECK (Interes > 10),
+    Interes                  CHECK (Interes > 10),
     Cantidad         REAL    NOT NULL
                              CHECK (Cantidad > 0),
     IDEstado         INTEGER REFERENCES Estado (IDEstado) ON DELETE SET NULL

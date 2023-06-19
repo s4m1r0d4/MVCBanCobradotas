@@ -4,6 +4,7 @@ using WebApp.Services.Interfaces;
 
 namespace WebApp.Services.Implementations;
 
+[Obsolete("FuncionesGerenteController now uses a dbcontext")]
 public class FuncionesGerenteService : IFuncionesGerenteService
 {
     private readonly BanCobradotasContext db;

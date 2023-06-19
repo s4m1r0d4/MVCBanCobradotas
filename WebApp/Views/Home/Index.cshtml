@@ -1,8 +1,4 @@
-﻿@{
-    Layout = "_Layout";
-}
-
-@if (ViewData.ContainsKey("nombreUsuario"))
+﻿@if (ViewData.ContainsKey("nombreUsuario"))
 {
     <h2>@ViewData["nombreUsuario"]</h2>
 }
@@ -15,7 +11,7 @@
         administracion de tus pagos y cuentas sea posible.</h1>
 </div>
 
-<img src="@Url.Content("~/images/Index.png")" alt="BanCobradotas Source File" class="imagen">
+<img src="@Url.Content("~/Images/Index.png")" alt="BanCobradotas Source File" class="imagen">
 
 <a href="@Url.Action("Registrarse", "LogIn")">
     <button class="ingreso">Registrarse</button>

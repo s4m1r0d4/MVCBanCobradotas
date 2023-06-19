@@ -26,7 +26,7 @@ public partial class Prestamo
     public double? PagoMensual { get; set; }
 
     [Display(Name = "Interés")]
-    public double Interes { get; set; }
+    public double? Interes { get; set; }
 
     [Display(Name = "Cantidad")]
     public double Cantidad { get; set; }

@@ -9,19 +9,18 @@
       <ul class="navbar-nav ">
         <li class="nav-item">
         <li><a href="@Url.Action("Index")" class="custom-link">BanCobradotas</a></li>
-        </li>
-        @if (Context.User.Identity?.IsAuthenticated ?? false)
-        {
+          @if (Context.User.Identity?.IsAuthenticated ?? false)
+          {
           <li class="nav-item">
           <li><a href="@Url.Action("LogOut", "LogIn")" class="custom-link">Salir de la cuenta</a></li>
           </li>
-        }
-        else
-        {
+          }
+          else
+          {
           <li class="nav-item">
             <a href="@Url.Action("IniciarSesion", "LogIn")" class="custom-link">Iniciar Sesion</a>
           </li>
-        }
+          }
       </ul>
     </div>
   </div>
