@@ -48,7 +48,7 @@ public class CuentaBancariaController : Controller
         ViewData["NumCuenta"] = cuenta.IDCuentaBancaria;
         ViewData["Nombre"] = GetNombre();
 
-        var prestamo = await db.GetPrestamoActivo(cuenta);
+        var prestamo = db.GetPrestamoActivo(cuenta);
         if (prestamo == null)
             return View();
 

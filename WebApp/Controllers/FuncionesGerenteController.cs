@@ -37,50 +37,47 @@ public class FuncionesGerenteController : Controller
     {
         // TODO: Implement this
         var empleados = await db.Empleados.Where(e => e.IDEmpleado == 1).ToListAsync();
-        
+
         var model = new AdministrarCuentasModel()
         {
             EmpleadoAlta = empleados
         };
 
-        if(id is not null)
-        {
+        if (id is not null) {
             ViewData["Empleado"] = id;
         }
 
         return View(model);
 
         var usuarios = await db.Usuarios.Where(u => u.IDUsuario == 1).ToListAsync();
-        
+
         var model2 = new AdministrarCuentasModel()
         {
             UsuarioAlta = usuarios
         };
 
-        if(id2 is not null)
-        {
+        if (id2 is not null) {
             ViewData["Usuario"] = id2;
         }
 
         return View(model2);
-        
+
     }
 
     [HttpPost]
     public async Task<IActionResult> eliminar(long? id)
     {
-        if(id is null)
-        {
+        if (id is null) {
             return RedirectToAction(nameof(AdministrarCuentas));
         }
 
         Empleado? emp = await db.Empleados.FirstOrDefaultAsync(e => e.IDEmpleado == id);
-        
+
         db.Empleados.Remove(emp);
         await db.SaveChangesAsync();
 
         return RedirectToAction(nameof(AdministrarCuentas));
-    
+
     }
 
     [HttpPost]
@@ -88,18 +85,16 @@ public class FuncionesGerenteController : Controller
     {
         // El Gerente sólo podrá dar de baja,a aquellos empleados 
         //y usuarios que no tengan registros de ningún préstamos en los últimos 6 meses.
-        if(id is null)
-        {
+        if (id is null) {
             return RedirectToAction(nameof(AdministrarCuentas));
         }
 
         Usuario? usr = await db.Usuarios.FirstOrDefaultAsync(u => u.IDUsuario == id);
-        
+
         db.Usuarios.Remove(usr);
         await db.SaveChangesAsync();
 
         return RedirectToAction(nameof(AdministrarCuentas));
-        }
     }
 
     [HttpPost]
@@ -109,7 +104,7 @@ public class FuncionesGerenteController : Controller
         // TODO: Implement this
         db.Empleados.Add(model);
         int affected = await db.SaveChangesAsync();
-        
+
         ViewData["Msg"] = "Empleado Creado con Exito";
 
         return View();
@@ -128,11 +123,9 @@ public class FuncionesGerenteController : Controller
         //hacer que si son mas de 4 dias los que eligion en date salga un text warning
         db.DiasVacacion.Add(model);
         int affected = await db.SaveChangesAsync();
-        
+
         ViewData["Msg"] = "Dias de vacaciones admitidos";
 
         return View();
     }
-
-
 }
