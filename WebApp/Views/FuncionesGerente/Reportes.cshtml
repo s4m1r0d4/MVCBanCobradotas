@@ -1,4 +1,17 @@
 <div>
     <h1>Generar reportes</h2>
+    <form asp-action="Reportes" asp-controller="FuncionesGerenteController" method="POST" >
+    <p>generar el reporte por..</p>
+    <select>
+    <option value="opcion1">Dia</option>
+    <option value="opcion2">Semana</option>
+    <option value="opcion3">Mes</option>
+    </select>
+    <p>Cliente</p>
     
+    </form>
+    <div class="aceptar">
+        <input type="submit" class="pure-input-rounded" required value="generar reporte"
+        style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
+    </div>
 </div>

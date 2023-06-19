@@ -99,8 +99,8 @@ public class FuncionesGerenteController : Controller
         await db.SaveChangesAsync();
 
         return RedirectToAction(nameof(AdministrarCuentas));
-        }
-    }
+     }
+    
 
     [HttpPost]
     public async Task<IActionResult> CrearEmpleado(Empleado model)
@@ -110,8 +110,6 @@ public class FuncionesGerenteController : Controller
         db.Empleados.Add(model);
         int affected = await db.SaveChangesAsync();
         
-        ViewData["Msg"] = "Empleado Creado con Exito";
-
         return View();
     }
 
