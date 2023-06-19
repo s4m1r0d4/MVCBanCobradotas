@@ -65,8 +65,7 @@ Se tiene que mostrar los últimos 10 préstamos
     </dl>
 </div>
 <div>
-    <form asp-action="Aceptar">
-        <input type="hidden" asp-for="IDPrestamo" />
+    <form asp-action="Aceptar" asp-route-id="@Model.IDPrestamo">
         <input type="submit" value="Aceptar" class="btn btn-primary" /> |
         <a asp-action="Index">De regreso a las solicitudes</a>
     </form>

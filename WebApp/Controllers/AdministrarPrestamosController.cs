@@ -91,11 +91,34 @@ public class AdministrarPrestamosController : Controller
 
     [HttpPost, ActionName("Aceptar")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AceptarPrestamo(long IDPrestamo)
+    public async Task<IActionResult> AceptarPrestamo(long? id)
     {
+        if (id is null)
+            return RedirectToAction("Index");
+
+        var prestamo = await db.Prestamos.FirstOrDefaultAsync(p => p.IDPrestamo == id);
+        if (prestamo is null)
+            return RedirectToAction("Index");
+
         // RQF10: El empleado podrá aceptar los préstamos de 6 y 12 meses.
+        if (HttpContext.User.IsInRole("Empleado") && prestamo.NumMeses > 12) {
+            ViewData["Msg"] = "El empleado podrá aceptar los préstamos de 6 y 12 meses";
+            return RedirectToAction(nameof(Index));
+        }
 
-        throw new NotImplementedException();
+        string? nominaStr = HttpContext.User.Claims.Where(c => c.Type == "IDNomina").Select(c => c.Value).FirstOrDefault();
+        long nomina = long.Parse(nominaStr);
+        prestamo.IDNomina = nomina;
+        prestamo.FechaAprobacion = DateTime.Now;
+        prestamo.IDEstado = 2; // Aceptado
+
+        int affected = await db.SaveChangesAsync();
+        if (affected != 1) {
+            ViewData["Msg"] = "Error aceptando el préstamo";
+            return RedirectToAction(nameof(Index));
+        }
+
+        ViewData["Msg"] = "Préstamo aceptado exitósamente";
+        return RedirectToAction(nameof(Index));
     }
-
 }

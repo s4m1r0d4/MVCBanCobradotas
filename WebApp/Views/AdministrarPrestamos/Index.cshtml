@@ -32,3 +32,10 @@
         </tbody>
     </table>
 </div>
+
+@if (ViewData.ContainsKey("Msg") && !String.IsNullOrEmpty((string?)ViewData["Msg"]))
+{
+    <div class="alert alert-primary">
+    @ViewData["Msg"]
+</div>
+}
