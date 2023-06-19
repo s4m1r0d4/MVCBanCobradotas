@@ -98,6 +98,13 @@ public class CuentaBancariaController : Controller
             }
         }
 
+        long[] validMonths = { 6, 12, 24, 36 };
+
+        if (!validMonths.Contains(model.NumMeses)) {
+            ViewData["Msg"] = "El número de meses solo puede ser 6, 12, 24 o 36";
+            return View();
+        }
+
         model.FechaSolicitud = currentDate;
         model.IDEstado = 1;
         model.IDCuentaBancaria = cuentaID;
