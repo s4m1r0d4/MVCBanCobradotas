@@ -53,11 +53,11 @@ body {
 }
 
 .imagen {
-    width: 900px;
-    height: 700px;
+    width: 700px;
+    height: 600px;
     position: fixed;
-    margin-left: 1200px;
-    margin-top: 450px;
+    margin-left: 900px;
+    margin-top: 100px;
 }
 
 .ingreso {
