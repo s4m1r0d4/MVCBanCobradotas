@@ -86,6 +86,8 @@ public class FuncionesGerenteController : Controller
     [HttpPost]
     public async Task<IActionResult> eliminarUsr(long? id)
     {
+        // El Gerente sólo podrá dar de baja,a aquellos empleados 
+        //y usuarios que no tengan registros de ningún préstamos en los últimos 6 meses.
         if(id is null)
         {
             return RedirectToAction(nameof(AdministrarCuentas));
@@ -97,12 +99,7 @@ public class FuncionesGerenteController : Controller
         await db.SaveChangesAsync();
 
         return RedirectToAction(nameof(AdministrarCuentas));
-    
-    }
-
-    public IActionResult CrearEmpleado()
-    {
-        return View();
+        }
     }
 
     [HttpPost]
@@ -124,10 +121,15 @@ public class FuncionesGerenteController : Controller
         return View();
     }
 
-    public async Task<IActionResult> Vacaciones()
+    public async Task<IActionResult> Vacaciones(DiaVacacion model)
     {
         //RQNF18: El gerente puede usar solo 4 días seguidos de vacaciones.
         // TODO: Implement this
+        //hacer que si son mas de 4 dias los que eligion en date salga un text warning
+        db.DiasVacacion.Add(model);
+        int affected = await db.SaveChangesAsync();
+        
+        ViewData["Msg"] = "Dias de vacaciones admitidos";
 
         return View();
     }
