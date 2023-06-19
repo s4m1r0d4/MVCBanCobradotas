@@ -48,7 +48,7 @@ public class CuentaBancariaController : Controller
         ViewData["NumCuenta"] = cuenta.IDCuentaBancaria;
         ViewData["Nombre"] = GetNombre();
 
-        var prestamo = await db.GetPrestamoActivo(cuenta);
+        var prestamo = db.GetPrestamoActivo(cuenta);
         if (prestamo == null)
             return View();
 
@@ -96,6 +96,13 @@ public class CuentaBancariaController : Controller
                 ViewData["Msg"] = err;
                 return View();
             }
+        }
+
+        long[] validMonths = { 6, 12, 24, 36 };
+
+        if (!validMonths.Contains(model.NumMeses)) {
+            ViewData["Msg"] = "El número de meses solo puede ser 6, 12, 24 o 36";
+            return View();
         }
 
         model.FechaSolicitud = currentDate;

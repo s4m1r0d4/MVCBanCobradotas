@@ -21,18 +21,17 @@ public static class CuentaBancariaExtensions
         return (affected, cb.IDCuentaBancaria);
     }
 
-    public static async Task<Prestamo?> GetPrestamoActivo(
+    public static Prestamo? GetPrestamoActivo(
         this BanCobradotasContext db,
         CuentaBancaria cuenta)
     {
-        var prestamos = await db.Prestamos
-                                .Where(p => p.IDCuentaBancaria == cuenta.IDCuentaBancaria)
-                                .Where(p => p.FechaLiquidacion == null)
-                                .Include(p => p.Pagos)
-                                .ToListAsync();
+        var prestamoActivo = db.Prestamos.Where(p => p.IDCuentaBancaria == cuenta.IDCuentaBancaria
+                                                && p.FechaAprobacion != null
+                                                && p.FechaLiquidacion == null)
+                                    .Include(p => p.Pagos)
+                                    .OrderByDescending(p => p.FechaAprobacion)
+                                    .FirstOrDefault();
 
-        if (prestamos == null) return null;
-
-        return prestamos.OrderByDescending(p => p.FechaAprobacion).FirstOrDefault();
+        return prestamoActivo;
     }
 }
