@@ -35,7 +35,7 @@ public partial class Prestamo
     public long IDEstado { get; set; }
 
     [Display(Name = "ID Cuenta Bancaria")]
-    public long IDCuentaBancaria { get; set; }
+    public long? IDCuentaBancaria { get; set; }
 
     [Display(Name = "ID Nómina")]
     public long? IDNomina { get; set; }

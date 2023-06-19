@@ -5,7 +5,6 @@ using BanCobradotas.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace WebApp.Controllers;
 
@@ -22,6 +21,27 @@ public class AdministrarPrestamosController : Controller
     public async Task<IActionResult> Index()
     {
         var solicitudes = await db.Prestamos.Where(p => p.FechaAprobacion == null).ToListAsync();
+
+        // RQNF28: El tiempo de validación de los préstamos es de 48Hrs
+        var twoDays = new TimeSpan(2, 0, 0, 0);
+        var solicitudesCaducas = solicitudes.Where(s => DateTime.Now - s.FechaSolicitud > twoDays);
+        if (solicitudesCaducas.Any()) {
+            db.Prestamos.RemoveRange(solicitudesCaducas);
+            int affected = await db.SaveChangesAsync();
+            if (affected == 0)
+                return Problem("Error eliminando las solicitudes caducas");
+        }
+
+        // RQNF27: Los préstamos deben de durar en el archivo hasta 6 meses después de la eliminación del usuario que tenía asignado dicho(s) préstamo(s).
+        var seisMeses = new TimeSpan(60, 0, 0, 0);
+        var prestamosDeUsuarioEliminado = db.Prestamos.Where(p => (p.IDCuentaBancaria == null) && (DateTime.Now - p.FechaAprobacion > seisMeses));
+        if (prestamosDeUsuarioEliminado.Any()) {
+            db.Prestamos.RemoveRange(prestamosDeUsuarioEliminado);
+            int affected = await db.SaveChangesAsync();
+            if (affected == 0)
+                return Problem("Error eliminando los préstamos de usuarios eliminados");
+        }
+
         var model = new HistorialPrestamosModel()
         {
             Prestamos = solicitudes
@@ -115,6 +135,12 @@ public class AdministrarPrestamosController : Controller
         long nomina = long.Parse(nominaStr);
         prestamo.IDNomina = nomina;
         prestamo.FechaAprobacion = DateTime.Now;
+        // RQNF26: La fecha de aprobación no puede ser antes de la fecha de solicitud.
+        if (prestamo.FechaAprobacion < prestamo.FechaSolicitud) {
+            TempData["Msg"] = "Error, la fecha de aprobación no puede ser antes de la fecha de solicitud";
+            return RedirectToAction(nameof(Index));
+        }
+
         prestamo.IDEstado = 2; // Aceptado
 
         int affected = await db.SaveChangesAsync();

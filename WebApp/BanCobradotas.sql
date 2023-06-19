@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on Sun Jun 18 22:13:50 2023
+-- File generated with SQLiteStudio v3.4.4 on Mon Jun 19 12:44:49 2023
 --
 -- Text encoding used: UTF-8
 --
@@ -179,13 +179,13 @@ CREATE TABLE IF NOT EXISTS Prestamo (
                                                           ON UPDATE CASCADE
                              NOT NULL,
     IDCuentaBancaria INTEGER REFERENCES CuentaBancaria (IDCuentaBancaria) ON DELETE SET NULL
-                                                                          ON UPDATE CASCADE
-                             NOT NULL,
+                                                                          ON UPDATE CASCADE,
     IDNomina         INTEGER REFERENCES Nomina (IDNomina) ON DELETE SET NULL
                                                           ON UPDATE CASCADE
 );
 
-INSERT INTO Prestamo (IDPrestamo, FechaSolicitud, FechaAprobacion, FechaLiquidacion, NumMeses, PagoMensual, Interes, Cantidad, IDEstado, IDCuentaBancaria, IDNomina) VALUES (2, '2023-06-17 23:54:05.1736101', NULL, NULL, 36, 1.0, 11.0, 200.0, 1, 1, NULL);
+INSERT INTO Prestamo (IDPrestamo, FechaSolicitud, FechaAprobacion, FechaLiquidacion, NumMeses, PagoMensual, Interes, Cantidad, IDEstado, IDCuentaBancaria, IDNomina) VALUES (2, '2023-06-17 23:54:05.1736101', NULL, NULL, 36, 1.0, 11.0, 200.0, 2, 1, 2);
+INSERT INTO Prestamo (IDPrestamo, FechaSolicitud, FechaAprobacion, FechaLiquidacion, NumMeses, PagoMensual, Interes, Cantidad, IDEstado, IDCuentaBancaria, IDNomina) VALUES (3, '2023-06-18 22:14:58.3251008', '2023-06-19 01:07:56.5285319', NULL, 6, NULL, NULL, 20.0, 2, 2, 1);
 
 -- Table: Usuario
 DROP TABLE IF EXISTS Usuario;
