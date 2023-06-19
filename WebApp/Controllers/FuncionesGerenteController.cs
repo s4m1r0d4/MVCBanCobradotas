@@ -104,7 +104,7 @@ public class FuncionesGerenteController : Controller
         // TODO: Implement this
         db.Empleados.Add(model);
         int affected = await db.SaveChangesAsync();
-
+        
         ViewData["Msg"] = "Empleado Creado con Exito";
 
         return View();

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Pagina Principal";
+    Layout = "_Layout";
 }
 
 @if (ViewData.ContainsKey("nombreUsuario"))
@@ -7,13 +7,6 @@
     <h2>@ViewData["nombreUsuario"]</h2>
 }
 
-<div class="BanCobradotas">
-    <a href="@Url.Action("Index")" class="custom-link">BanCobradotas</a>
-
-</div>
-<div class="login">
-    <a href="@Url.Action("IniciarSesion", "LogIn")" class="custom-link">IniciarSesion</a>
-</div>
 <div class="texto1">
     <h1 class="animate__animated animate__backInLeft">Descubre mejores maneras de mantener tu dinero</h1>
 </div>
