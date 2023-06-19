@@ -148,14 +148,12 @@ public class CuentaBancariaController : Controller
 
     public async Task<IActionResult> HistorialPagos()
     {
-        var pagos = await db.Pagos.Where(p => p.IDPago == cuentaID && p.FechaAprobacion != null)
-                            .Include(p => p.Pagos).ToListAsync();
-
+        long IDPagos = GetIDPrestamo();
+        var pagos = await db.Pagos.Where(p => p.IDPrestamo == IDPagos).ToListAsync();
         HistorialPrestamosModel model = new()
         {
-            Prestamos = prestamos
+            Pagos = pagos
         };
-
         return View(model);
     }
 }
