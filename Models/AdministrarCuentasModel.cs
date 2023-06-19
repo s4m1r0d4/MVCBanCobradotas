@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 namespace BanCobradotas.Models;
 public class AdministrarCuentasModel
 {
-    public List<Usuario>? UsuariosAlta;
+    public List<Usuario>? UsuarioAlta;
     public List<Empleado>? EmpleadoAlta;
 }

@@ -8,6 +8,7 @@
 
     @if (Model != null)
     {
+        <p>prestamo activo</p>
         <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
             <thead>
                 <th>Folio del prestamo</th>
@@ -27,5 +28,18 @@
             </tbody>
         </table>
     }
+    <div class="controler">
+    <a href="@Url.Action("HistorialPrestamos", "CuentaBancaria")">
+        <button class="btn btn-primary">HistorialPrestamos</button>
+    </a>
 
+    </a>
+        <a href="@Url.Action("SolicitarPrestamo", "CuentaBancaria")">
+        <button class="btn btn-primary">Solicitar Prestamo</button>
+    </a>
+
+
+        <a href="@Url.Action("SolicitarPrestamo", "CuentaBancaria")">
+        <button class="btn btn-primary">Solicitar Prestamo</button>
+    </a>
 </div>

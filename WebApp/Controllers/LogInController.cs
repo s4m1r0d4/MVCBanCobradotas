@@ -99,6 +99,11 @@ public class LogInController : Controller
         if (usr.Gerente is not null) {
             return RedirectToAction("Index", "FuncionesGerente");
         }
+
+        if(usr.Usuario is not null)
+        {
+            return RedirectToAction("Index", "CuentaBancaria");
+        }
         return RedirectToAction("Index", "Home");
     }
 

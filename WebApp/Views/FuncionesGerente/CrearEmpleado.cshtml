@@ -1,0 +1,21 @@
+@model Empleado
+
+<div>
+    <h1>Crear un empleado</h1>
+    <form asp-controller="FuncionesGerente" asp-action="CrearEmpleado" method="Post" class="pure-form">
+        <br><br/>
+        <p>Ingresa el Nombre:</p>
+        <input type="text" placeholder="Nombre" asp-for="Nombre" required/>
+         <br><br/>
+        <p>Ingresa el Apellido:</p>
+        <input type="text" placeholder="Apellido" asp-for="Apellido" required/>
+        <br><br/>
+        <p>Ingresa el Fecha De nacimiento:</p>
+        <input type="Date" asp-for="FechaNacimiento" required/>
+    <div class="aceptar">
+            <input type="submit" class="pure-input-rounded" required
+                style="background: #363469; border-color: #363469; font-family: 'Baloo Tamma 2', cursive; color: #FFFF" />
+        </div>
+    </form>
+
+</div>

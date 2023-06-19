@@ -19,8 +19,8 @@
                     <td>@data.IDPrestamo</td>
                     <td>@data.Cantidad</td>
                     <td>@data.Pagos.Count()</td>
-                    <td>@data.FechaSolicitud</td>
-                    <td>@data.FechaLiquidacion</td>
+                    <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}",data.FechaSolicitud))</td>
+                    <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", data.FechaLiquidacion))</td>
                 </tr>
             }
         </tbody>
